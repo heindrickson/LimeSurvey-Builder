@@ -198,20 +198,23 @@ Then, use one or more of the following prompts to help create your survey.
 
 
 # How to use 
-Requisito: assinatura de um provedor de IA que disponibilize modelo de LLM com capacidade de 'raciocínio' (em agosto/2026, modelos recomendados são: Gemini 3.1 Pro, ChatGpt 5.6 Earth e Claude Opus 4.8).  
-Passos: 
+Requirement: subscription to an AI provider that offers an LLM model with 'reasoning' capability (as of August 2026, some recommended models are: Gemini 3.1 Pro, ChatGpt 5.6 Earth, and Claude Opus 4.8).  
+Follow these steps:
 - Copy the text of the "Main prompt" above and paste it into your AI's chat interface
 - Wait for the assistant's introduction message
 - Then, use one or more of the "Conversation starters and subsequent prompts" to help create your survey
 - Although the assistant can build individual questions interactively, the recommended method is to send a mockup (DOCX or HTML) of the complete survey, so the LLM can process all at once
 - If your AI model generates an actual file, just download it and import it into LimeSurvey
 - Otherwise, if the generated content is displayed on the screen, copy it, paste into Notepad++, replace the characters '⇨' with '\t', and save as UTF-8 text file; then import the file into LimeSurvey
-- Errors on importing? Check if you edited the file as explained in the previous item and if the encoding is UTF-8.
+- Errors on importing?
+  - Check if you edited the file as explained in the previous item and if the encoding is UTF-8  
+  - Check if you really used a powerful model with 'reasoning' capability (see recommended models above).
 <br><br>
 
 
 # Example of a survey mockup
-
+Your can download and use this file as a template to build your own survey mockup. When ready, sent it to the SurveyBuilder4LimeSurvey assistant: 
+[blabla](<https://github.com/heindrickson/SurveyBuilder4LimeSurvey/PROTÓTIPO do questionário da CIN (completo).docx>) 
 <br><br>
 
 
