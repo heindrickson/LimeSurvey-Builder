@@ -225,7 +225,7 @@ Follow these steps:
 
 # Example of a survey mockup
 Your can download the file below and use it as a template to build your own survey mockup. When ready, send the survey mockup to the LimeSurvey-Builder assistant: 
-[Survey Mockup Example](<https://github.com/heindrickson/LimeSurvey-Builder/PROTÓTIPO do questionário da CIN (completo).docx>) 
+[Survey Mockup Example](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/PROT%C3%93TIPO%20do%20question%C3%A1rio%20da%20CIN%20(completo).docx) 
 <br><br>
 
 
