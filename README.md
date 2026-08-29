@@ -62,16 +62,19 @@ SL⇨⇨surveyls_language⇨⇨en-US⇨⇨en-US⇨⇨⇨⇨⇨⇨⇨⇨
 SL⇨⇨surveyls_title⇨⇨Scientific Education Survey⇨⇨en-US⇨⇨⇨⇨⇨⇨⇨⇨
 SL⇨⇨surveyls_description⇨⇨Simulation of a scientific survey⇨⇨en-US⇨⇨⇨⇨⇨⇨⇨⇨
 SL⇨⇨surveyls_endtext⇨⇨Thank you for your participation!⇨⇨en-US⇨⇨⇨⇨⇨⇨⇨⇨
-SL⇨⇨surveyls_dateformat⇨⇨5⇨⇨en-US⇨⇨⇨⇨⇨⇨⇨⇨
-SL⇨⇨surveyls_numberformat⇨⇨1⇨⇨en-US⇨⇨⇨⇨⇨⇨⇨⇨
+SL⇨⇨surveyls_dateformat⇨⇨9⇨⇨en-US⇨⇨⇨⇨⇨⇨⇨⇨
+SL⇨⇨surveyls_numberformat⇨⇨0⇨⇨en-US⇨⇨⇨⇨⇨⇨⇨⇨
 
 ## Conversation flow 
 I. Ask: "Which language should we use? (It will be used in this chat and also in the generated TSV file)". 
-   Obtain the user's response and, from that point on, chat with the user in the specified language. 
-   Additionally, if the language is NOT English, look up the country associated with the specified language on https://localedb.org/locale-codes and retrieve the language identifier found in the 'BCP-47' field. For example, for the country 'Egypt', you would find 'ar-EG'. 
-   **Important:** Wherever you would normally use 'en-US' in the TSV, use this identifier instead. 
-II. If the user asks, explain what you do.
-III. If the user wants to build a questionnaire, follow steps 1 to 9 (one step at a time):
+   Obtain the user's response and, from that point on, chat with the user in the specified language.
+II. If the language informed by the user is NOT English, look up the country associated with the specified language on https://localedb.org/locale-codes and retrieve the language identifier found in the 'BCP-47' field. For example, for the country 'Egypt', you would find 'ar-EG'. 
+   **Important:** Wherever you would normally use 'en-US' in the TSV, use this identifier instead.  
+III. From the language informed, try to infer the date format and the decimal mark to use.  
+     If the date format is "DD/MM/YYYY" or similar, then change the value following surveyls_dateformat in the initial template to 5. If the date format is "MM-DD-YYYY" or similar, then set that value to 9.
+     Regarding the decimal mark, if it is ',', then change the value following surveyls_numberformat in the initial template to 1. If the decimal mark is '.', then set that value to 0.
+IV. If the user asks, explain what you do.
+ V. If the user wants to build a questionnaire, follow steps 1 to 9 (one step at a time):
 1. Ask: "What is the survey title?"
 2. Adjust the SL⇨⇨surveyls_title line with the provided title.
 3. Ask: "Do you want the question text in bold (we will use <b>)?"
@@ -227,11 +230,12 @@ Follow these steps:
   - in the 'Find what' text field, put the character '⇨' (without apostrophe or quotation mark)
   - in the 'Replace with' text field, type '\t' (without apostrophe or quotation mark)
   - click the 'Replace All' button 
-  - then save the edited content as a text file
+  - then save the edited content as a text file (.txt)
   - finally, import the saved file into LimeSurvey
 - Errors on importing?
   - Check if you edited the file as explained in the previous item and if the encoding is UTF-8  
   - Check if you really used a powerful model with 'reasoning' capability (see recommended models above).
+- After importing your questionnaire into LimeSurvey, check if the date format and the decimal mark are correctly set. If not, adjust them.
 <br><br>
 
 
