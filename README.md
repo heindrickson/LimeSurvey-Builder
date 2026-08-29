@@ -7,10 +7,12 @@ LimeSurvey is a very powerful open-source software for conducting online surveys
 It allows one to build, publish, and run surveys, as well as collect, analyze, and export responses.  
 The tool supports dozens of question types and has advanced features like conditional logic (branching) and question validation. 
 
-However, creating a survey directly in the LimeSurvey application can be pretty tedious and often somewhat tricky.  
+$\color{red}{\textsf{However, creating a survey directly in the LimeSurvey application can be pretty tedious and often somewhat tricky.}}$ 😒
+
 So, it's natural that we looked for ways to use generative Artificial Intelligence (AI) to make that task easier. 
 
-We found that the most effective way to get AI to create a valid survey definition is to instruct it to use the Tab Separated Value format (TSV), which is supported by LimeSurvey. 
+> [!TIP] 
+We found that the most effective way to get AI to create a valid survey definition is to instruct it to use the Tab Separated Value format (TSV), which is supported by LimeSurvey! ☺️
 <br><br>
 
 # Why not an Assistant/Agent?
