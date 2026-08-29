@@ -3,11 +3,11 @@ Prompts that guide a Large Language Model (LLM) to act as an assistant in order 
 <br><br>
 
 # Motivation
-LimeSurvey is a very powerful open-source software for conducting online surveys. 
-It allows one to build, publish, and run surveys, as well as collect, analyze, and export responses. 
+LimeSurvey is a very powerful open-source software for conducting online surveys.  
+It allows one to build, publish, and run surveys, as well as collect, analyze, and export responses.  
 The tool supports dozens of question types and has advanced features like conditional logic (branching) and question validation. 
 
-However, creating a survey directly in the LimeSurvey application can be pretty tedious and often somewhat tricky. 
+However, creating a survey directly in the LimeSurvey application can be pretty tedious and often somewhat tricky.  
 So, it's natural that we looked for ways to use generative Artificial Intelligence (AI) to make that task easier. 
 
 We found that the most effective way to get AI to create a valid survey definition is to instruct it to use the Tab Separated Value format (TSV), which is supported by LimeSurvey. 
@@ -199,13 +199,15 @@ Then, use one or more of the following prompts to help create your survey.
 
 
 # How to use 
-Requirement: subscription to an AI provider that offers an LLM model with 'reasoning' capability (as of August 2026, some recommended models are: Gemini 3.1 Pro, ChatGpt 5.6 Earth, and Claude Opus 4.8).  
-Follow these steps:
+Requirement: subscription to an AI provider that offers chat with 'reasoning' models. In addition, the model must have Web access enabled.  
+As of August 2026, some recommended models are: ChatGpt 5.6 Terra, Claude Sonnet 5, Gemini 3.1 Pro, Kimi K3, DeepSeek V4 Pro, Qwen3.8-27B, GLM 5.2, Minimax M3.  
+
+Follow these steps:  
 - Copy the text of the "Main prompt" above and paste it into your AI's chat interface
 - Wait for the assistant's introduction message
-- Then, use one or more of the "Conversation starters and subsequent prompts" to help create your survey
-- Although the assistant can build individual questions interactively, the recommended method is to send a mockup (DOCX or HTML) of the complete survey, so the LLM can process all at once
-- If your AI model generates an actual file, just download it and import it into LimeSurvey
+- Then, use one or more of the "Conversation starters and subsequent prompts" to help create your survey.
+  - To send the Assistant a survey mockup file, see the [Example](https://github.com/heindrickson/LimeSurvey-Builder/#example-of-a-survey-mockup) section
+- If your AI model generates an actual .txt file as a response, just download it and import it into LimeSurvey
 - Otherwise, if the generated content is only displayed on the screen:
   - copy the generated content from the AI chat
   - open Notepad++ and paste the content copied
@@ -223,9 +225,20 @@ Follow these steps:
 <br><br>
 
 
-# Example of a survey mockup
-Your can download the file below and use it as a template to build your own survey mockup. When ready, send the survey mockup to the LimeSurvey-Builder assistant: 
+# Example of a survey mockup file
+Although the assistant can build individual questions interactively, the recommended method is to send a mockup (DOCX or HTML) of the complete survey, so the LLM can "see the big picture". 
+
+A mockup file is practically mandatory when defining conditional questions ('branching'), as it makes it easier for the LLM to visualize the full scenario (it will be able to 'see' the question containing the condition and the referenced question(s) at the same time). Note that, to be able to define branching conditions, the mockup will need to have the questions numbered, in order to reference each question by its own number.  
+PS - the numbering scheme used in the mockup will be automatically replaced by the LLM using a GmmQnn pattern (Gmm = Group number; Qnn = Question number within the group).
+
+Your can download the DOCX file below and use it as a template to build your own survey mockup. When ready, send your DOCX to the LimeSurvey-Builder assistant: 
 [Survey Mockup Example](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/PROT%C3%93TIPO%20do%20question%C3%A1rio%20da%20CIN%20(completo).docx) 
 <br><br>
 
+
+# Limitations
+When exporting a survey from LimeSurvey in TSV format, we can see numerous fields that could theoretically be populated.  
+These fields may be for general use or specific to certain question types.  
+However, our assistant is explicitly instructed to use **only** a specific set of fields (the most common ones).  
+Therefore, if the user requests some functionality requiring a field not covered by these instructions, the assistant will likely be unable to implement it.
 
