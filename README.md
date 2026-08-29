@@ -219,7 +219,7 @@ Follow these steps:
 - Copy the text of the "Main prompt" above and paste it into your AI's chat interface
 - Wait for the assistant's introduction message
 - Then, use one or more of the "Conversation starters and subsequent prompts" to help create your survey.
-  - To send the Assistant a survey mockup file, see the [Example](https://github.com/heindrickson/LimeSurvey-Builder/#example-of-a-survey-mockup) section
+  - To send the Assistant a survey mockup file, see the [Example](https://github.com/heindrickson/LimeSurvey-Builder/#example-of-a-survey-mockup-file) section
 - If your AI model generates an actual .txt file as a response, just download it and import it into LimeSurvey
 - Otherwise, if the generated content is only displayed on the screen:
   - copy the generated content from the AI chat
