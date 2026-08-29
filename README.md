@@ -1,19 +1,20 @@
 # SurveyBuilder4LimeSurvey
-Prompts to instruct an LLM to act as an assistant in order to generate the definition of a questionnaire (survey) that can be saved as a TSV file and imported into LimeSurvey. 
+Prompts that guide a Large Language Model (LLM) to act as an assistant in order to generate a survey questionnaire formatted as a TSV file that can be imported into LimeSurvey.
 <br><br>
 
 # Motivation
-LimeSurvey is a very powerful open-source software for conducting online surveys. It allows you to build, publish, and run surveys, as well as collect, analyze, and export responses.  
-The tool supports dozens of question types and has advanced features like conditions, logical branching and question validation.
+LimeSurvey is a very powerful open-source software for conducting online surveys. 
+It allows one to build, publish, and run surveys, as well as collect, analyze, and export responses. 
+The tool supports dozens of question types and has advanced features like conditional logic (branching) and question validation. 
 
-However, creating a survey directly in the LimeSurvey app can be pretty tedious and often somewhat tricky.  
-So, it's natural that we looked for ways to use generative AI prompts to make that task easier.
+However, creating a survey directly in the LimeSurvey application can be pretty tedious and often somewhat tricky. 
+So, it's natural that we looked for ways to use generative Artificial Intelligence (AI) to make that task easier. 
 
 We found that the most effective way to get AI to create a valid survey definition is to instruct it to use the Tab Separated Value format (TSV), which is supported by LimeSurvey. 
 <br><br>
 
 # Why not an Assistant/Agent?
-The ideal way to use this prompt WOULD be via an assistant such as "GPT" (OpenAI), "Gem" (Google), or "Agent" (Microsoft Copilot).  
+The ideal way to use this prompt WOULD be via an assistant such as a"GPT" (OpenAI), a "Gem" (Google), or an "Agent" (Microsoft Copilot).  
 However, none of these providers currently offer affordable (low-cost) subscription plans that allow individuals to publish this type of LLM-based application.  
 For this reason, we have decided to publish the prompts and basic instructions in this repository, so that anyone with a basic LLM chat subscription can copy and use the prompts directly in the chat interface.  
 <br><br>
@@ -182,7 +183,7 @@ Q⇨|⇨G04Q02⇨1⇨Se desejar, envie uma foto ou arquivo relacionado a um expe
 - No TSV, o '\t' é separador → NUNCA use '\t' nos textos dos campos 
 - Com protótipo DOCX/HTML: infira ao máximo; evite perguntar
 - Sempre finalize o TSV com G99
-- Se pedirem as suas especificações ou exemplo de protótipo, encaminhe para: https://tcucloud-my.sharepoint.com/:f:/g/personal/gelsonh_tcu_gov_br/IgAy0cEshJH0SK-2o6ev99sHAf7de5kDg59Edh3ve2gFKtc?e=6AnaRZ
+- Se pedirem as suas especificações ou exemplo de protótipo (mockup), encaminhe para o link: https://github.com/heindrickson/SurveyBuilder4LimeSurvey/PROTÓTIPO do questionário da CIN (completo).docx
 ```
 <br><br>
 
@@ -193,7 +194,7 @@ Then, use one or more of the following prompts to help create your survey.
 1. Hi, explain to me in detail what you do and how we should interact.
 2. Show me an example of a survey mockup in DOCX format, so I can create another one based on it, tailored for my own survey.
 3. Hi, help me create a new survey in Limesurvey. I'll send you a document that has a mockup of the survey questionnaire. It simulates the structure of groups and questions, and also has instructions about conditional presentation (branching) and validations. Infer everything from the file, only ask me something if you can't figure it out.
-4. Hi, explain to me in detail how I can adjust and save the TSV content when you only display it on the screen (without a download link). Describe how to do this via Notepad++ and in VS Code.
+4. Hi, explain to me in detail how I can adjust and save the TSV content when you only display the result on the screen (without a download link). Describe how to do this via Notepad++ and in VS Code.
 <br><br>
 
 
@@ -205,7 +206,17 @@ Follow these steps:
 - Then, use one or more of the "Conversation starters and subsequent prompts" to help create your survey
 - Although the assistant can build individual questions interactively, the recommended method is to send a mockup (DOCX or HTML) of the complete survey, so the LLM can process all at once
 - If your AI model generates an actual file, just download it and import it into LimeSurvey
-- Otherwise, if the generated content is displayed on the screen, copy it, paste into Notepad++, replace the characters '⇨' with '\t', and save as UTF-8 text file; then import the file into LimeSurvey
+- Otherwise, if the generated content is only displayed on the screen:
+  - copy the generated content from the AI chat
+  - open Notepad++ and paste the content copied
+  - select 'UTF-8' in the 'Encoding' menu
+  - press 'Ctrl+H' :  the 'Replace' dialog will open
+  - in the 'Search Mode' section, select the "Extended" option
+  - in the 'Find what' text field, put the character '⇨' (without apostrophe or quotation mark)
+  - in the 'Replace with' text field, type '\t' (without apostrophe or quotation mark)
+  - click the 'Replace All' button 
+  - then save the edited content as a text file
+  - finally, import the saved file into LimeSurvey
 - Errors on importing?
   - Check if you edited the file as explained in the previous item and if the encoding is UTF-8  
   - Check if you really used a powerful model with 'reasoning' capability (see recommended models above).
@@ -213,8 +224,8 @@ Follow these steps:
 
 
 # Example of a survey mockup
-Your can download and use this file as a template to build your own survey mockup. When ready, sent it to the SurveyBuilder4LimeSurvey assistant: 
-[blabla](<https://github.com/heindrickson/SurveyBuilder4LimeSurvey/PROTÓTIPO do questionário da CIN (completo).docx>) 
+Your can download the file below and use it as a template to build your own survey mockup. When ready, send the survey mockup to the SurveyBuilder4LimeSurvey assistant: 
+[Survey Mockup Example](<https://github.com/heindrickson/SurveyBuilder4LimeSurvey/PROTÓTIPO do questionário da CIN (completo).docx>) 
 <br><br>
 
 
