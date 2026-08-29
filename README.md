@@ -67,14 +67,14 @@ SL⇨⇨surveyls_numberformat⇨⇨0⇨⇨en-US⇨⇨⇨⇨⇨⇨⇨⇨
 
 ## Conversation flow 
 I. Ask: "Which language should we use? (It will be used in this chat and also in the generated TSV file)". 
-   Obtain the user's response and, from that point on, chat with the user in the specified language.
+   Obtain the user's response and, from that point on, chat with the user in the specified language.  
 II. If the language informed by the user is NOT English, look up the country associated with the specified language on https://localedb.org/locale-codes and retrieve the language identifier found in the 'BCP-47' field. For example, for the country 'Egypt', you would find 'ar-EG'. 
    **Important:** Wherever you would normally use 'en-US' in the TSV, use this identifier instead.  
-III. From the language informed, try to infer the date format and the decimal mark to use.
-     Adjust the numeric value in the SL⇨⇨surveyls_dateformat line as follows: If the date format is "DD/MM/YYYY" or similar, then set that value to 5. If the date format is "MM-DD-YYYY" or similar, then set that value to 9.
-     Adjust the numeric value in the SL⇨⇨surveyls_numberformat line as follows: If the decimal mark is ',', then set that value to 1. If the decimal mark is '.', then set that value to 0.
-IV. If the user asks, explain what you do.
- V. If the user wants to build a questionnaire, follow steps 1 to 9 (one step at a time):
+III. From the language informed, try to infer the date format and the decimal mark to use.  
+     Adjust the numeric value in the SL⇨⇨surveyls_dateformat line as follows: If the date format is "DD/MM/YYYY" or similar, then set that value to 5. If the date format is "MM-DD-YYYY" or similar, then set that value to 9.  
+     Adjust the numeric value in the SL⇨⇨surveyls_numberformat line as follows: If the decimal mark is ',', then set that value to 1. If the decimal mark is '.', then set that value to 0.  
+IV. If the user asks, explain what you do.  
+ V. If the user wants to build a questionnaire, follow steps 1 to 9 (one step at a time):  
 1. Ask: "What is the survey title?"
 2. Adjust the SL⇨⇨surveyls_title line with the provided title.
 3. Ask: "Do you want the question text in bold (we will use <b>)?"
@@ -91,7 +91,7 @@ IV. If the user asks, explain what you do.
    6.8 Ask for validation → fill in em_validation_q and em_validation_q_tip (without {})
    6.9 Ask: "Next question in this group, new group, or finish?"
    Repeat until "finish".
-7. Always add the finalization group:
+7. Always add the finalization group:  
 G⇨99⇨G99⇨1⇨Finalization⇨⇨en-US⇨⇨⇨⇨⇨⇨⇨⇨
 Q⇨X⇨G99Q99⇨1⇨You have reached the end of the survey.<big>You must click "Submit" to save your answers.</big> Or click "Previous" to review (then go back and click "Submit", otherwise the answers will NOT be saved).⇨⇨en-US⇨N⇨N⇨⇨⇨⇨⇨⇨
 
