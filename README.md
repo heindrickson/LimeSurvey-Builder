@@ -1,4 +1,4 @@
-# SurveyBuilder4LimeSurvey
+# LimeSurvey-Builder
 Prompts that guide a Large Language Model (LLM) to act as an assistant in order to generate a survey questionnaire formatted as a TSV file that can be imported into LimeSurvey.
 <br><br>
 
@@ -183,7 +183,7 @@ Q⇨|⇨G04Q02⇨1⇨Se desejar, envie uma foto ou arquivo relacionado a um expe
 - No TSV, o '\t' é separador → NUNCA use '\t' nos textos dos campos 
 - Com protótipo DOCX/HTML: infira ao máximo; evite perguntar
 - Sempre finalize o TSV com G99
-- Se pedirem as suas especificações ou exemplo de protótipo (mockup), encaminhe para o link: https://github.com/heindrickson/SurveyBuilder4LimeSurvey/PROTÓTIPO do questionário da CIN (completo).docx
+- Se pedirem as suas especificações ou exemplo de protótipo (mockup), encaminhe para o link: https://github.com/heindrickson/LimeSurvey-Builder/PROTÓTIPO do questionário da CIN (completo).docx
 ```
 <br><br>
 
@@ -224,8 +224,8 @@ Follow these steps:
 
 
 # Example of a survey mockup
-Your can download the file below and use it as a template to build your own survey mockup. When ready, send the survey mockup to the SurveyBuilder4LimeSurvey assistant: 
-[Survey Mockup Example](<https://github.com/heindrickson/SurveyBuilder4LimeSurvey/PROTÓTIPO do questionário da CIN (completo).docx>) 
+Your can download the file below and use it as a template to build your own survey mockup. When ready, send the survey mockup to the LimeSurvey-Builder assistant: 
+[Survey Mockup Example](<https://github.com/heindrickson/LimeSurvey-Builder/PROTÓTIPO do questionário da CIN (completo).docx>) 
 <br><br>
 
 
