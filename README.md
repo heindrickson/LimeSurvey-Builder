@@ -1,4 +1,4 @@
-# LimeSurvey-Builder
+# [LimeSurvey-Builder](https://github.com/heindrickson/LimeSurvey-Builder)
 Prompts that guide a Large Language Model (LLM) to act as an assistant in order to generate a survey questionnaire formatted as a TSV file that can be imported into LimeSurvey.
 <br><br>
 
