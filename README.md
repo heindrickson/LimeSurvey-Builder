@@ -246,7 +246,7 @@ A mockup file is practically mandatory when defining conditional questions ('bra
 PS - the numbering scheme used in the mockup will be automatically replaced by the LLM using a GmmQnn pattern (Gmm = Group number; Qnn = Question number within the group).
 
 Your can download the DOCX file below and use it as a template to build your own survey mockup. When ready, send your DOCX to the LimeSurvey-Builder assistant: 
-[Survey Mockup Example](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/PROT%C3%93TIPO%20do%20question%C3%A1rio%20da%20CIN%20(completo).docx) 
+[Survey Mockup Example](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/Survey_Mockup_Example.docx) 
 <br><br>
 
 
