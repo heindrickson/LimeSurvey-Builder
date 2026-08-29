@@ -12,7 +12,7 @@ $\color{red}{\textsf{However, creating a survey directly in the LimeSurvey appli
 So, it's natural that we looked for ways to use generative Artificial Intelligence (AI) to make that task easier. 
 
 > [!TIP] 
-We found that the most effective way to get AI to create a valid survey definition is to instruct it to use the Tab Separated Value format (TSV), which is supported by LimeSurvey! ☺️
+We found that the most effective way to get AI to create a valid survey definition is to instruct it to use the Tab Separated Value format (TSV), which is supported by LimeSurvey! 🚀
 <br><br>
 
 # Why not an Assistant/Agent?
@@ -235,7 +235,7 @@ Follow these steps:
 - Errors on importing?
   - Check if you edited the file as explained in the previous item and if the encoding is UTF-8  
   - Check if you really used a powerful model with 'reasoning' capability (see recommended models above).
-- After importing your questionnaire into LimeSurvey, check if the date format and the decimal mark are correctly set. If not, adjust them.
+- After importing your questionnaire into LimeSurvey, check if the date format and the decimal mark are correctly set. If not, adjust them in the Settings tab -> Text Elements -> Date format and Decimal mark.
 <br><br>
 
 
