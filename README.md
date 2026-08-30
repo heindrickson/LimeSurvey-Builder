@@ -7,20 +7,20 @@ LimeSurvey is a very powerful open-source software for conducting online surveys
 It allows one to build, publish, and run surveys, as well as collect, analyze, and export responses.  
 The tool supports dozens of question types and has advanced features like conditional logic (branching) and question validation. 
 
-> [!NOTE]
 $\color{blue}{\textsf{However, creating a survey directly in the LimeSurvey application can be pretty tedious and often somewhat tricky.}}$ 😒
 
 So, it's natural that we looked for ways to use generative Artificial Intelligence (AI) to make that task easier. 
 
-> [!CAUTION]
-$\color{red}{\textsf{But tests showed that simply asking the AI ​​to generate a survey in LimeSurvey's standard .lss format often results in import failures.}}$ 😒
+> Tests showed that simply asking the AI ​​to generate a survey in LimeSurvey's standard .lss format often results in import failures.  
+> This likely occurs because the format can vary between LimeSurvey versions or because the documentation on the format is either difficult to find or highly complex, given the dozens of fields that are defined.  
+> Therefore, it was necessary to explore other alternatives. 🔎
 <br><br>
 
 # The Solution Found
 > 💡  
-> We found that the most effective and least error-prone way to use AI to create a valid survey definition is to instruct it to use the Tab-Separated Value (TSV) format, which is supported by LimeSurvey!  
+> We found that the most effective and least error-prone way to use AI to create a valid survey definition is to instruct it to use the Tab-Separated Value (TSV) format, which is supported by LimeSurvey, **and** use only a subset of the specification's attribute fields. !  
 
-However, we identified a side effect that can occur when chat-based AI services use the TSV format. Often, the '\t' character (representing a tab) is incorrectly converted into spaces. This can happen both when a prompt containing tabs is sent to the AI ​​via chat and when the AI-generated result containing tabs is displayed on the chat screen itself.  
+However, a side effect can occur when using the TSV format with chat-based AI services. Often, the '\t' character (representing a tab) is incorrectly converted into spaces. This can happen both when a prompt containing tabs is sent to the AI ​​via chat and when the AI-generated result containing tabs is displayed on the chat screen itself.  
 
 > ✔️
 > For this reason, we are using a simple trick: during chat communication with the AI, every '\t' character is sent as a '⇨' character, and the AI ​​is instructed to also replace any '\t' character with '⇨' when displaying the generated TSV content in the chat. 
@@ -226,7 +226,7 @@ Then, use one or more of the following prompts to help create your survey.
 
 # How to use 
 Requirement: subscription to an AI provider that offers chat with 'reasoning' models. In addition, the model must have Web access enabled.  
-As of August 2026, some recommended models are: ChatGpt 5.6 Terra, Claude Sonnet 5, Gemini 3.1 Pro, Kimi K3, DeepSeek V4 Pro, Qwen3.8-27B, GLM 5.2, Minimax M3.  
+As of August 2026, some recommended models are: ChatGpt 5.6 Terra, Claude Sonnet 5, Gemini 3.1 Pro, Kimi K3, DeepSeek V4 Pro, Qwen3.8-27B, GLM 5.3-Flash, Minimax M3.  
 
 Follow these steps:  
 - Copy the text of the "Main prompt" above and paste it into your AI's chat interface
