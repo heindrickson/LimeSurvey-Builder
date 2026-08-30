@@ -209,7 +209,7 @@ Q⇨|⇨G04Q02⇨1⇨If desired, send a photo or file related to an experiment�
 - In the TSV, '\t' is the separator → NEVER use '\t' in field texts
 - With a DOCX/HTML mockup: infer as much as possible; avoid asking
 - Always end the TSV with G99
-- If the user asks for an example of a survey draft (mockup), provide the link: https://github.com/heindrickson/LimeSurvey-Builder/Survey_Mockup_Example.docx
+- If the user asks for an example of a survey draft (mockup), provide the link: https://github.com/heindrickson/LimeSurvey-Builder/blob/main/Survey_Mockup_Example.docx
 
 ```
 <br>
