@@ -7,17 +7,20 @@ O LimeSurvey é um software open-source muito poderoso para a realização de pe
 Ele permite construir, publicar e executar pesquisas, bem como coletar, analisar e exportar respostas.  
 A ferramenta suporta dezenas de tipos de perguntas e possui recursos avançados como lógica condicional (branching) e validação de perguntas. 
 
-$\color{red}{\textsf{No entanto, criar uma pesquisa diretamente na aplicação LimeSurvey pode ser bastante tedioso e frequentemente um tanto complicado.}}$ 😒
+$\color{blue}{\textsf{No entanto, criar uma pesquisa diretamente na aplicação LimeSurvey pode ser bastante tedioso e frequentemente um tanto complicado.}}$ 😒
 
 Portanto, é natural que procurássemos maneiras de usar a Inteligência Artificial (IA) generativa para facilitar essa tarefa.  
-Porém, testes realizados mostraram que simplesmente solicitar à IA que gere uma pesquisa no formato .lss padrão do LimeSurvey costuma falhar na hora da importação.  
+
+> Testes realizados mostraram que simplesmente solicitar à IA que gere uma pesquisa no formato .lss padrão do LimeSurvey costuma falhar na hora da importação.  
+> Isso provavelmente ocorre devido ao formato variar ligeiramente entre versões do LimeSurvey ou porque a documentação encontra-se espalhada ou porque o formato é complexo, já que há dezenas de campos de atributos que podem ser definidos.  
+> Portanto, foi necessário explorar outras alternativas. 🔎
 <br><br>
 
 # Solução encontrada
 > 💡  
-> Descobrimos que a maneira mais eficaz e menos propensa a falhas de usar a IA para criar uma definição de pesquisa válida é instruí-la a usar o formato Tab Separated Value (TSV), que é suportado pelo LimeSurvey! 
+> Descobrimos que a maneira mais eficaz e menos propensa a falhas de usar a IA para criar uma definição de pesquisa válida é instruí-la a usar o formato Tab Separated Value (TSV), que é suportado pelo LimeSurvey, **e usar apenas** um subconjunto dos campos de atributos (considerados 'essenciais') ! 
 
-Porém, foi constatado um efeito colateral que pode ocorrer no uso do formato TSV pelos serviços de IA baseados em chat. Muitas vezes o caracter '\t' que representa uma tabulação é indevidamente transformado em espaços. Isso pode ocorrer quando um prompt contendo tabulações é enviado para a IA via chat e também quando o resultado gerado pela IA contém tabulações é apresentado na própria tela do chat.  
+Porém, um efeito colateral pode ocorrer ao utilizarmos o formato TSV em serviços de IA baseados em chat. Muitas vezes o caracter '\t' que representa uma tabulação é indevidamente transformado em espaços. Isso pode ocorrer quando um prompt contendo tabulações é enviado para a IA via chat e também quando o resultado gerado pela IA contém tabulações e é apresentado diretamente na tela do chat.  
 > ✔️  
 > Por essa razão, estamos usando um truque simples: na comunicação via chat com a IA, todo caracter '\t' é enviado como um caracter '⇨' e a IA é instruída para também substituir qualquer caracter '\t' por '⇨' ao mostrar no chat o conteúdo do TSV gerado.
 
@@ -27,7 +30,7 @@ Veja na seção [Como usar](https://github.com/heindrickson/LimeSurvey-Builder/e
 # Por que não um Assistente/Agent pronto para uso?
 A maneira ideal de usar este prompt SERIA através de um assistente como um "GPT" (OpenAI), um "Gem" (Google) ou um "Agent" (Microsoft Copilot).  
 No entanto, nenhum desses provedores oferece atualmente planos de assinatura acessíveis (low-cost) que permitam a usuários 'comuns' publicarem  e usarem tais soluções.  
-Além disso, verificamos que todos os provedores desse tipo de solução limitam o prompt de instruções a 8 mil caracteres, tamanho que não é suficiente para a descrição detalhada das orientações que precisamos enviar à IA no prompt principal.   
+Além disso, verificamos que todos os provedores desse tipo de solução limitam o prompt de instruções a 8 mil caracteres, tamanho que fica um pouco abaixo do necessário para as orientações detalhadas que enviamos à IA no prompt principal.   
 
 Por esses motivos, decidimos publicar os prompts e instruções de uso neste repositório, de modo que qualquer pessoa com uma assinatura básica de serviço de chat com LLM possa copiá-los e usá-los diretamente na interface do chat.  
 <br><br>
