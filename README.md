@@ -1,5 +1,5 @@
 # [LimeSurvey-Builder](https://github.com/heindrickson/LimeSurvey-Builder)
-Prompts that guide a Large Language Model (LLM) to act as an assistant in order to generate a survey questionnaire formatted as a TSV file that can be imported into LimeSurvey.
+A prompt that guides a Large Language Model (LLM) to act as an Assistant to generate a survey questionnaire formatted as a valid TSV file for import into LimeSurvey, along with supplementary prompts to assist in executing this task.
 <br><br>
 
 # Motivation
@@ -25,14 +25,14 @@ However, a side effect can occur when using the TSV format with chat-based AI se
 > ✔️
 > For this reason, we are using a simple trick: during chat communication with the AI, every '\t' character is sent as a '⇨' character, and the AI ​​is instructed to also replace any '\t' character with '⇨' when displaying the generated TSV content in the chat. 
 
-See the [How to use](https://github.com/heindrickson/LimeSurvey-Builder/edit/main/README.md#how-to-use) section for explanations on how to replace the '⇨' characters found in the AI-generated TSV text (this is only necessary if the AI ​​being used lacks a file download generation feature or if that function is not enabled).
+See the [How to use](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/README-en.md#how-to-use) section for explanations on how to replace the '⇨' characters found in the AI-generated TSV text (this is only necessary if the AI ​​being used lacks a file download generation feature or if that function is not enabled).
 <br><br>
 
 # Why not a ready-to-use Assistant/Agent?
 The ideal way to use this prompt **would** be via an assistant such as a "GPT" (OpenAI), a "Gem" (Google), or an "Agent" (Microsoft Copilot).  
 However, none of these providers currently offer affordable (low-cost) subscription plans that allow "average" individual users to publish and use such solutions.  
-Furthermore, we found that all providers of this type of solution limit the instruction prompt to 8,000 characters, a length insufficient for the detailed description of the guidelines we need to send to the AI ​​in the main prompt.  
-For these reasons, we decided to publish the prompts and usage instructions in this repository, so that anyone with a basic LLM chat service subscription can copy and use them directly within the chat interface.  
+Furthermore, we found that all providers of this type of solution limit the instruction prompt to 8,000 characters, a length that falls slightly short of what is needed for the detailed guidelines we send to the AI ​​in the main prompt.  
+For these reasons, we decided to publish the prompts and usage instructions in this repository, so that anyone with a basic LLM chat service subscription can copy and use them directly within the chat interface.
 <br><br>
 
 # The main prompt
@@ -212,7 +212,7 @@ Q⇨|⇨G04Q02⇨1⇨If desired, send a photo or file related to an experiment�
 - If the user asks for an example of a survey draft (mockup), provide the link: https://github.com/heindrickson/LimeSurvey-Builder/Survey_Mockup_Example.docx
 
 ```
-<br><br>
+<br>
 
 # Conversation starters and subsequent prompts
 After copying the main prompt and pasting it into your AI's chat, wait for the assistant's introduction message. 
@@ -232,7 +232,7 @@ Follow these steps:
 - Copy the text of the "Main prompt" above and paste it into your AI's chat interface
 - Wait for the assistant's introduction message
 - Then, use one or more of the "Conversation starters and subsequent prompts" to help create your survey.
-  - To send the Assistant a survey mockup file, see the [Example](https://github.com/heindrickson/LimeSurvey-Builder/#example-of-a-survey-mockup-file) section
+  - To send the Assistant a survey mockup file, see the [Example](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/README-en.md#example-of-a-survey-mockup-file) section
 - If your AI model generates an actual .txt file as a response, just download it and import it into LimeSurvey
 - Otherwise, if the generated content is only displayed on the screen:
   - copy the generated content from the AI chat
