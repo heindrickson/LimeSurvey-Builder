@@ -1,5 +1,5 @@
 # [LimeSurvey-Builder](https://github.com/heindrickson/LimeSurvey-Builder)
-Prompts que guiam um Large Language Model (LLM) para atuar como um assistente a fim de gerar um questionário de pesquisa formatado como um arquivo TSV que pode ser importado para o LimeSurvey.
+Prompt que orienta um Large Language Model (LLM) a atuar como um Assistente a fim de gerar um questionário de pesquisa formatado como um arquivo TSV válido para ser importado no LimeSurvey, bem como prompts complementares para auxiliar na execução dessa tarefa.
 <br><br>
 
 # Motivação
@@ -7,18 +7,29 @@ O LimeSurvey é um software open-source muito poderoso para a realização de pe
 Ele permite construir, publicar e executar pesquisas, bem como coletar, analisar e exportar respostas.  
 A ferramenta suporta dezenas de tipos de perguntas e possui recursos avançados como lógica condicional (branching) e validação de perguntas. 
 
-$\color{red}{	extsf{No entanto, criar uma pesquisa diretamente na aplicação LimeSurvey pode ser bastante tedioso e frequentemente um tanto complicado.}}$ 😒
+$\color{red}{\textsf{No entanto, criar uma pesquisa diretamente na aplicação LimeSurvey pode ser bastante tedioso e frequentemente um tanto complicado.}}$ 😒
 
-Portanto, é natural que procurássemos maneiras de usar a Inteligência Artificial (AI) generativa para facilitar essa tarefa. 
-
-> [!TIP] 
-Descobrimos que a maneira mais eficaz de fazer a AI criar uma definição de pesquisa válida é instruí-la a usar o formato Tab Separated Value (TSV), que é suportado pelo LimeSurvey! 🚀
+Portanto, é natural que procurássemos maneiras de usar a Inteligência Artificial (IA) generativa para facilitar essa tarefa.  
+Porém, testes realizados mostraram que simplesmente solicitar à IA que gere uma pesquisa no formato .lss padrão do LimeSurvey costuma falhar na hora da importação.  
 <br><br>
 
-# Por que não um assistente/Agent?
+# Solução encontrada
+> 💡  
+> Descobrimos que a maneira mais eficaz e menos propensa a falhas de usar a IA para criar uma definição de pesquisa válida é instruí-la a usar o formato Tab Separated Value (TSV), que é suportado pelo LimeSurvey! 
+
+Porém, foi constatado um efeito colateral que pode ocorrer no uso do formato TSV pelos serviços de IA baseados em chat. Muitas vezes o caracter '\t' que representa uma tabulação é indevidamente transformado em espaços. Isso pode ocorrer quando um prompt contendo tabulações é enviado para a IA via chat e também quando o resultado gerado pela IA contém tabulações é apresentado na própria tela do chat.  
+> ✔️  
+> Por essa razão, estamos usando um truque simples: na comunicação via chat com a IA, todo caracter '\t' é enviado como um caracter '⇨' e a IA é instruída para também substituir qualquer caracter '\t' por '⇨' ao mostrar no chat o conteúdo do TSV gerado.
+
+Veja na seção [Como usar](https://github.com/heindrickson/LimeSurvey-Builder/edit/main/README-pt.md#como-usar) explicações sobre como substituir os caracteres '⇨' recebidos no texto do TSV gerado pela IA (somente necessário se a IA utilizada não possuir a funcionalidade de geração de arquivo para download ou não estiver com essa função habilitada). 
+<br><br>
+
+# Por que não um Assistente/Agent pronto para uso?
 A maneira ideal de usar este prompt SERIA através de um assistente como um "GPT" (OpenAI), um "Gem" (Google) ou um "Agent" (Microsoft Copilot).  
-No entanto, nenhum desses provedores oferece atualmente planos de assinatura acessíveis (low-cost) que permitam a usuários 'comuns' publicarem esse tipo de aplicação baseada em LLMs.  
-Por esse motivo, decidimos publicar os prompts e instruções básicas neste repository, para que qualquer pessoa com uma assinatura básica de chat LLM possa copiar e usar os prompts diretamente na interface do chat.  
+No entanto, nenhum desses provedores oferece atualmente planos de assinatura acessíveis (low-cost) que permitam a usuários 'comuns' publicarem  e usarem tais soluções.  
+Além disso, verificamos que todos os provedores desse tipo de solução limitam o prompt de instruções a 8 mil caracteres, tamanho que não é suficiente para a descrição detalhada das orientações que precisamos enviar à IA no prompt principal.   
+
+Por esses motivos, decidimos publicar os prompts e instruções de uso neste repositório, de modo que qualquer pessoa com uma assinatura básica de serviço de chat com LLM possa copiá-los e usá-los diretamente na interface do chat.  
 <br><br>
 
 # O prompt principal
@@ -213,7 +224,7 @@ Em seguida, use um ou mais dos seguintes prompts para ajudar a criar sua pesquis
 
 # Como usar 
 Requisito: assinatura de um provedor de AI que ofereça chat com modelos de 'reasoning'. Além disso, o modelo deve ter acesso à Web habilitado.  
-Em agosto de 2026, alguns modelos recomendados são: ChatGpt 5.6 Terra, Claude Sonnet 5, Gemini 3.1 Pro, Kimi K3, DeepSeek V4 Pro, Qwen3.8-27B, GLM 5.2, Minimax M3.  
+Em agosto de 2026, alguns modelos recomendados são: ChatGpt 5.6 Terra, Claude Sonnet 5, Gemini 3.1 Pro, Kimi K3, DeepSeek V4 Pro, Qwen3.8-27B, GLM 5.3-Flash, Minimax M3.  
 
 Siga estes passos:  
 - Copie o texto do "Main prompt" acima e cole na interface de chat da sua AI
@@ -235,7 +246,7 @@ Siga estes passos:
 - Erros na importação?
   - Verifique se você editou o arquivo conforme explicado no item anterior e se o encoding é UTF-8  
   - Verifique se você realmente usou um modelo poderoso com capacidade de 'reasoning' (veja os modelos recomendados acima).
-- Após importar seu questionário no LimeSurvey, verifique se o formato de data (Date format) e a marca decimal (Decimal mark) estão configurados corretamente. Se não, ajuste-os na aba Settings -> Text Elements -> Date format e Decimal mark.
+- Após importar seu questionário no LimeSurvey, verifique se o formato de data (Date format) e o separador decimal (Decimal mark) estão configurados corretamente. Se não, ajuste-os na aba Settings -> Text Elements -> Date format e Decimal mark.
 <br><br>
 
 
@@ -256,7 +267,7 @@ Esses campos podem ser de uso geral ou específicos para certos tipos de pergunt
 No entanto, nosso assistente é explicitamente instruído a usar **apenas** um conjunto específico de campos (os mais comuns, talvez 90% dos casos de uso).  
 
 Portanto, se o usuário solicitar alguma funcionalidade que exija um campo não coberto por essas instruções, o assistente provavelmente será incapaz de implementá-la.
-Assim, a recomendação é: **não** peça ao assistente para gerar uma pesquisa com recursos avançados (ex.: geração de estatísticas, quotas, pesquisas multilíngues etc.) ou atributos de GUI. 
+Assim, a recomendação é: **não** peça ao assistente para gerar uma pesquisa com recursos avançados (ex.: geração de estatísticas, quotas, tamanhos de campos, pesquisas multilíngues etc.) ou atributos de GUI. 
 Use o assistente para criar os recursos básicos da pesquisa e — após importá-la para o LimeSurvey — adicione ou modifique atributos como os mencionados. 
 
 PS - Existe um workaround para criar uma pesquisa multilíngue com o LimeSurvey-Builder: crie o conteúdo TSV para cada idioma usando o assistente, em seguida, concatene todos eles juntos. **Mas** será necessário editar o TSV final para fazer esses ajustes: a) mantenha apenas UM conjunto de registros do tipo 'S', no início; b) ajuste o registro 'additional_languages' para adicionar os outros identificadores de idioma. 
@@ -264,4 +275,4 @@ PS - Existe um workaround para criar uma pesquisa multilíngue com o LimeSurvey-
 
 
 # Licença
-O LimeSurvey-Builder é licenciado para uso, modificação e distribuição sob os termos da Mozilla Public License versão 2.0 (MPL-2.0).
+O LimeSurvey-Builder é licenciado para uso, modificação e distribuição sob os termos da licença MIT License.
