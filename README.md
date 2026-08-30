@@ -7,18 +7,32 @@ LimeSurvey is a very powerful open-source software for conducting online surveys
 It allows one to build, publish, and run surveys, as well as collect, analyze, and export responses.  
 The tool supports dozens of question types and has advanced features like conditional logic (branching) and question validation. 
 
-$\color{red}{\textsf{However, creating a survey directly in the LimeSurvey application can be pretty tedious and often somewhat tricky.}}$ 😒
+> [!NOTE]
+$\color{blue}{\textsf{However, creating a survey directly in the LimeSurvey application can be pretty tedious and often somewhat tricky.}}$ 😒
 
 So, it's natural that we looked for ways to use generative Artificial Intelligence (AI) to make that task easier. 
 
-> [!TIP] 
-We found that the most effective way to get AI to create a valid survey definition is to instruct it to use the Tab Separated Value format (TSV), which is supported by LimeSurvey! 🚀
+> [!CAUTION]
+$\color{red}{\textsf{But tests showed that simply asking the AI ​​to generate a survey in LimeSurvey's standard .lss format often results in import failures.}}$ 😒
 <br><br>
 
-# Why not an Assistant/Agent?
-The ideal way to use this prompt WOULD be via an assistant such as a"GPT" (OpenAI), a "Gem" (Google), or an "Agent" (Microsoft Copilot).  
-However, none of these providers currently offer affordable (low-cost) subscription plans that allow individuals to publish this type of LLM-based application.  
-For this reason, we have decided to publish the prompts and basic instructions in this repository, so that anyone with a basic LLM chat subscription can copy and use the prompts directly in the chat interface.  
+# The Solution Found
+> 💡  
+> We found that the most effective and least error-prone way to use AI to create a valid survey definition is to instruct it to use the Tab-Separated Value (TSV) format, which is supported by LimeSurvey!  
+
+However, we identified a side effect that can occur when chat-based AI services use the TSV format. Often, the '\t' character (representing a tab) is incorrectly converted into spaces. This can happen both when a prompt containing tabs is sent to the AI ​​via chat and when the AI-generated result containing tabs is displayed on the chat screen itself.  
+
+> ✔️
+> For this reason, we are using a simple trick: during chat communication with the AI, every '\t' character is sent as a '⇨' character, and the AI ​​is instructed to also replace any '\t' character with '⇨' when displaying the generated TSV content in the chat. 
+
+See the [How to use](https://github.com/heindrickson/LimeSurvey-Builder/edit/main/README.md#how-to-use) section for explanations on how to replace the '⇨' characters found in the AI-generated TSV text (this is only necessary if the AI ​​being used lacks a file download generation feature or if that function is not enabled).
+<br><br>
+
+# Why not a ready-to-use Assistant/Agent?
+The ideal way to use this prompt **would** be via an assistant such as a "GPT" (OpenAI), a "Gem" (Google), or an "Agent" (Microsoft Copilot).  
+However, none of these providers currently offer affordable (low-cost) subscription plans that allow "average" individual users to publish and use such solutions.  
+Furthermore, we found that all providers of this type of solution limit the instruction prompt to 8,000 characters, a length insufficient for the detailed description of the guidelines we need to send to the AI ​​in the main prompt.  
+For these reasons, we decided to publish the prompts and usage instructions in this repository, so that anyone with a basic LLM chat service subscription can copy and use them directly within the chat interface.  
 <br><br>
 
 # The main prompt
@@ -210,7 +224,6 @@ Then, use one or more of the following prompts to help create your survey.
 4. Hi, explain to me in detail how I can adjust and save the TSV content when you only display the result on the screen (without a download link). Describe how to do this via Notepad++ and in VS Code.
 <br><br>
 
-
 # How to use 
 Requirement: subscription to an AI provider that offers chat with 'reasoning' models. In addition, the model must have Web access enabled.  
 As of August 2026, some recommended models are: ChatGpt 5.6 Terra, Claude Sonnet 5, Gemini 3.1 Pro, Kimi K3, DeepSeek V4 Pro, Qwen3.8-27B, GLM 5.2, Minimax M3.  
@@ -238,7 +251,6 @@ Follow these steps:
 - After importing your questionnaire into LimeSurvey, check if the date format and the decimal mark are correctly set. If not, adjust them in the Settings tab -> Text Elements -> Date format and Decimal mark.
 <br><br>
 
-
 # Example of a survey mockup file
 Although the assistant can build individual questions interactively, the recommended method is to send a mockup (DOCX or HTML) of the complete survey, so the LLM can "see the big picture". 
 
@@ -249,22 +261,20 @@ Your can download the DOCX file below and use it as a template to build your own
 [Survey Mockup Example](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/Survey_Mockup_Example.docx) 
 <br><br>
 
-
 # Limitations
 When exporting a survey from LimeSurvey in TSV format, one can see numerous fields that could theoretically be populated.  
 These fields may be for general use or specific to certain question types.  
 However, our assistant is explicitly instructed to use **only** a specific set of fields (the most common ones, maybe 90% of use cases).  
 
 Therefore, if the user requests some functionality requiring a field not covered by these instructions, the assistant will likely be unable to implement it.
-So, the recommendation is: do **not** ask the Assistant to generate a survey with advanced features (e.g., statistics generation, quotas, multilingual surveys etc.) or GUI attributes. 
+So, the recommendation is: do **not** ask the Assistant to generate a survey with advanced features (e.g., statistics generation, quotas, fields size, multilingual surveys etc.) or GUI attributes. 
 Use the Assistant to create the basic survey features, and — after importing it into LimeSurvey — add or modify attributes such as those mentioned. 
 
 PS - There is a workaround to create a multilingual survey with LimeSurvey-Builder: create the TSV content for each language using the Assistant, then concatenate all of them together. **But** it will be necessary to edit the final TSV to make these adjustments: a) keep only ONE set of type 'S' records, at the beginning; b) adjust the 'additional_languages' record to add the other language identifiers. 
 <br><br>
 
-
 # License
-LimeSurvey-Builder is licensed for use, modification and distribution under the terms of Mozilla Public License version 2.0 (MPL-2.0).
+LimeSurvey-Builder is licensed for use, modification and distribution under the terms of the MIT License.
 
 
 
