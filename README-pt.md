@@ -24,7 +24,7 @@ Porém, um efeito colateral pode ocorrer ao utilizarmos o formato TSV em serviç
 > ✔️  
 > Por essa razão, estamos usando um truque simples: na comunicação via chat com a IA, todo caracter '\t' é enviado como um caracter '⇨' e a IA é instruída para também substituir qualquer caracter '\t' por '⇨' ao mostrar no chat o conteúdo do TSV gerado.
 
-Veja na seção [Como usar](https://github.com/heindrickson/LimeSurvey-Builder/edit/main/README-pt.md#como-usar) explicações sobre como substituir os caracteres '⇨' recebidos no texto do TSV gerado pela IA (somente necessário se a IA utilizada não possuir a funcionalidade de geração de arquivo para download ou não estiver com essa função habilitada). 
+Veja na seção [Como usar](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/README-pt.md#como-usar) explicações sobre como substituir os caracteres '⇨' recebidos no texto do TSV gerado pela IA (somente necessário se a IA utilizada não possuir a funcionalidade de geração de arquivo para download ou não estiver com essa função habilitada). 
 <br><br>
 
 # Por que não um Assistente/Agent pronto para uso?
@@ -212,7 +212,7 @@ Q⇨|⇨G04Q02⇨1⇨Se desejar, envie uma foto ou arquivo relacionado a um expe
 - Se o usuário pedir um exemplo de esboço (mockup) de pesquisa, informe o link: https://github.com/heindrickson/LimeSurvey-Builder/Esboço_de_pesquisa_Exemplo.docx
 
 ```
-<br><br>
+<br>
 
 # Iniciadores de conversa e prompts subsequentes
 Após copiar o prompt principal e colar no chat da sua AI, aguarde a mensagem de introdução do assistente. 
@@ -233,7 +233,7 @@ Siga estes passos:
 - Copie o texto do "Main prompt" acima e cole na interface de chat da sua AI
 - Aguarde a mensagem de introdução do assistente
 - Em seguida, use um ou mais dos "Iniciadores de conversa e prompts subsequentes" para ajudar a criar sua pesquisa.
-  - Para enviar ao assistente um arquivo de esboço (mockup) da pesquisa, veja a seção [Exemplo](https://github.com/heindrickson/LimeSurvey-Builder/#example-of-a-survey-mockup-file)
+  - Para enviar ao assistente um arquivo de esboço (mockup) da pesquisa, veja a seção [Exemplo](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/README-pt.md#exemplo-de-um-arquivo-de-esbo%C3%A7o-de-pesquisa)
 - Se o seu modelo de AI gerar um arquivo .txt real como resposta, basta fazer o download e importá-lo no LimeSurvey
 - Caso contrário, se o conteúdo gerado for exibido apenas na tela:
   - copie o conteúdo gerado do chat da AI
