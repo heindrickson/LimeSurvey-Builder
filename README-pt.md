@@ -32,7 +32,7 @@ A maneira ideal de usar este prompt SERIA através de um assistente como um "GPT
 No entanto, nenhum desses provedores oferece atualmente planos de assinatura acessíveis (low-cost) que permitam a usuários 'comuns' publicarem  e usarem tais soluções.  
 Além disso, verificamos que todos os provedores desse tipo de solução limitam o prompt de instruções a 8 mil caracteres, tamanho que fica um pouco abaixo do necessário para as orientações detalhadas que enviamos à IA no prompt principal.   
 
-Por esses motivos, decidimos publicar os prompts e instruções de uso neste repositório, de modo que qualquer pessoa com uma assinatura básica de serviço de chat com LLM possa copiá-los e usá-los diretamente na interface do chat.  
+Por esses motivos, decidimos publicar os prompts e instruções de uso neste repositório, de modo que qualquer pessoa com uma assinatura básica de serviço de chat com LLM possa copiá-los e usá-los diretamente na interface do chat.
 <br><br>
 
 # O prompt principal
@@ -224,7 +224,6 @@ Em seguida, use um ou mais dos seguintes prompts para ajudar a criar sua pesquis
 4. Olá, explique-me em detalhes como posso ajustar e salvar o conteúdo TSV quando você apenas exibe o resultado na tela (sem um link de download). Descreva como fazer isso via Notepad++ e no VS Code.
 <br><br>
 
-
 # Como usar 
 Requisito: assinatura de um provedor de AI que ofereça chat com modelos de 'reasoning'. Além disso, o modelo deve ter acesso à Web habilitado.  
 Em agosto de 2026, alguns modelos recomendados são: ChatGpt 5.6 Terra, Claude Sonnet 5, Gemini 3.1 Pro, Kimi K3, DeepSeek V4 Pro, Qwen3.8-27B, GLM 5.3-Flash, Minimax M3.  
@@ -232,7 +231,7 @@ Em agosto de 2026, alguns modelos recomendados são: ChatGpt 5.6 Terra, Claude S
 Siga estes passos:  
 - Copie o texto do "Main prompt" acima e cole na interface de chat da sua AI
 - Aguarde a mensagem de introdução do assistente
-- Em seguida, use um ou mais dos "Iniciadores de conversa e prompts subsequentes" para ajudar a criar sua pesquisa.
+- Em seguida, use um ou mais dos [Iniciadores de conversa e prompts subsequentes](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/README-pt.md#iniciadores-de-conversa-e-prompts-subsequentes) para ajudar a criar sua pesquisa.
   - Para enviar ao assistente um arquivo de esboço (mockup) da pesquisa, veja a seção [Exemplo](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/README-pt.md#exemplo-de-um-arquivo-de-esbo%C3%A7o-de-pesquisa)
 - Se o seu modelo de AI gerar um arquivo .txt real como resposta, basta fazer o download e importá-lo no LimeSurvey
 - Caso contrário, se o conteúdo gerado for exibido apenas na tela:
@@ -252,7 +251,6 @@ Siga estes passos:
 - Após importar seu questionário no LimeSurvey, verifique se o formato de data (Date format) e o separador decimal (Decimal mark) estão configurados corretamente. Se não, ajuste-os na aba Settings -> Text Elements -> Date format e Decimal mark.
 <br><br>
 
-
 # Exemplo de um arquivo de esboço de pesquisa
 Embora o assistente possa construir perguntas individuais de forma interativa, o método recomendado é enviar um esboço (DOCX ou HTML) da pesquisa completa, para que o LLM possa "ver o panorama geral" (see the big picture). 
 
@@ -262,7 +260,6 @@ PS - o esquema de numeração usado no esboço será substituído automaticament
 Você pode baixar o arquivo DOCX abaixo e usá-lo como um template para construir seu próprio esboço de pesquisa. Quando estiver pronto, envie seu DOCX para o assistente do LimeSurvey-Builder: 
 [Exemplo de Esboço de Pesquisa](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/Esboço_de_pesquisa_Exemplo.docx) 
 <br><br>
-
 
 # Limitações
 Ao exportar uma pesquisa do LimeSurvey no formato TSV, pode-se ver inúmeros campos que poderiam em tese serem preenchidos.  
@@ -275,7 +272,6 @@ Use o assistente para criar os recursos básicos da pesquisa e — após import�
 
 PS - Existe um workaround para criar uma pesquisa multilíngue com o LimeSurvey-Builder: crie o conteúdo TSV para cada idioma usando o assistente, em seguida, concatene todos eles juntos. **Mas** será necessário editar o TSV final para fazer esses ajustes: a) mantenha apenas UM conjunto de registros do tipo 'S', no início; b) ajuste o registro 'additional_languages' para adicionar os outros identificadores de idioma. 
 <br><br>
-
 
 # Licença
 O LimeSurvey-Builder é licenciado para uso, modificação e distribuição sob os termos da licença MIT License.
