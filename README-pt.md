@@ -209,7 +209,7 @@ Q⇨|⇨G04Q02⇨1⇨Se desejar, envie uma foto ou arquivo relacionado a um expe
 - No TSV, o '\t' é separador → NUNCA use '\t' nos textos dos campos 
 - Com esboço DOCX/HTML: infira ao máximo; evite perguntar
 - Sempre finalize o TSV com G99
-- Se o usuário pedir um exemplo de esboço (mockup) de pesquisa, informe o link: https://github.com/heindrickson/LimeSurvey-Builder/Esboço_de_pesquisa_Exemplo.docx
+- Se o usuário pedir um exemplo de esboço (mockup) de pesquisa, informe o link: https://github.com/heindrickson/LimeSurvey-Builder/blob/main/Esboço_de_pesquisa_Exemplo.docx
 
 ```
 <br>
