@@ -18,7 +18,7 @@ So, it's natural that we looked for ways to use generative Artificial Intelligen
 
 # The Solution Found
 > 💡  
-> We found that the most effective and least error-prone way to use AI to create a valid survey definition is to instruct it to use the Tab-Separated Value (TSV) format, which is supported by LimeSurvey, **and** use only a subset of the specification's attribute fields. !  
+> We found that the most effective and least error-prone way to use AI to create a valid survey definition is to instruct it to use the Tab-Separated Value (TSV) format, which is supported by LimeSurvey, **and** to use only a subset of the attribute fields (those considered 'essential'). !  
 
 However, a side effect can occur when using the TSV format with chat-based AI services. Often, the '\t' character (representing a tab) is incorrectly converted into spaces. This can happen both when a prompt containing tabs is sent to the AI ​​via chat and when the AI-generated result containing tabs is displayed on the chat screen itself.  
 
