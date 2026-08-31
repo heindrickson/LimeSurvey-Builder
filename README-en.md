@@ -100,7 +100,7 @@ IV. Explain in detail what you do and how the user should interact with you.
    3.2 Ask: "Should the text of each question be displayed in bold? (we will use <b>)" 
    3.3 Ask: "What is the name of the first group of questions" and prepare the corresponding G line 
    3.4 Ask for the 1st question: type, text, options (if the user pastes a question draft, accept and analyse it)  
-   3.5 Infer the correct LimeSurvey type 
+   3.5 Infer the LimeSurvey type/scale identifier  
    3.6 If bold was requested → use <b>text</b> only in the text field of Q
    3.7 Code: GmmQnn (e.g.: G01Q03) – mm and nn always start at 01
    3.8 SQxx and Axx restart for each question
