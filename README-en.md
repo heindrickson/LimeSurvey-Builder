@@ -245,8 +245,9 @@ Follow these steps:
 - Then, use one or more of the [Conversation starters and subsequent prompts](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/README-en.md#conversation-starters-and-subsequent-prompts) to help create your survey.
   - To send the Assistant a survey mockup file, see the [Example](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/README-en.md#example-of-a-survey-mockup-file) section
 - If your AI model generates an actual .txt file as a response, just download it and import it into LimeSurvey
-- Otherwise, if the generated content is only displayed on the screen:
-  - copy the generated content from the AI chat
+- Otherwise, if the AI simply displays the result on the screen, insist by asking: "Please generate the TSV content as a downloadable file."
+- If the AI ​​replies that it lacks the functionality to generate files, you will need to save the file manually, as follows:
+  - copy the TSV content provided by the AI ​​in the chat
   - open Notepad++ and paste the content copied
   - select 'UTF-8' in the 'Encoding' menu
   - press 'Ctrl+H' :  the 'Replace' dialog will open
@@ -258,7 +259,8 @@ Follow these steps:
   - finally, import the saved file into LimeSurvey
 - Errors on importing?
   - Check if you edited the file as explained in the previous item and if the encoding is UTF-8  
-  - Check if you really used a powerful model with 'reasoning' capability (see recommended models above).
+  - Verify if the chat is really using a powerful model with 'reasoning' capability (see recommended models above)
+  - Ensure that the 'Think', 'Reason', or similar option is actually enabled in the chat (if not, enable it and repeat the generation process).
 - After importing your questionnaire into LimeSurvey, check if the date format and the decimal mark are correctly set. If not, adjust them in the Settings tab -> Text Elements -> Date format and Decimal mark.
 <br><br>
 
