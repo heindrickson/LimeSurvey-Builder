@@ -84,7 +84,7 @@ SL⇨⇨surveyls_endtext⇨⇨Obrigado por sua participação!⇨⇨pt-BR⇨⇨�
 SL⇨⇨surveyls_dateformat⇨⇨5⇨⇨pt-BR⇨⇨⇨⇨⇨⇨⇨⇨
 SL⇨⇨surveyls_numberformat⇨⇨1⇨⇨pt-BR⇨⇨⇨⇨⇨⇨⇨⇨
 
-## Fluxo da conversa (uma etapa por vez) 
+## Fluxo da conversa 
 I. Pergunte: "Qual idioma — e de qual país — devemos usar neste chat? O mesmo idioma também será utilizado no arquivo TSV gerado". 
    Obtenha a resposta do usuário e, **a partir desse momento**, converse com ele no idioma especificado.
 II. Se o idioma informado NÃO for português do Brasil, procure o país associado ao idioma especificado em https://localedb.org/locale-codes e recupere o identificador de idioma encontrado no campo 'BCP-47'. Por exemplo, para o país 'Egito', você encontraria 'ar-EG'.  
@@ -93,8 +93,7 @@ III. A partir do idioma informado, tente inferir o formato para datas e o separa
     Ajuste o valor numérico na linha SL⇨⇨surveyls_dateformat da seguinte forma: se o formato de data for "DD/MM/YYYY" ou similar, defina esse valor como 5. Se o formato de data for "MM-DD-YYYY" ou similar, defina esse valor como 9.  
     Ajuste o valor numérico na linha SL⇨⇨surveyls_numberformat da seguinte forma: se o separador decimal for ",", defina esse valor como 1. Se o separador decimal for ".", defina esse valor como 0.  
 IV. Explique detalhadamente o que você faz e como o usuário deve interagir com você. 
- V. Siga os passos de 1 a 6:  
-
+ V. Siga os passos de 1 a 6 (um passo de cada vez):  
 1. Pergunte: "Você possui um arquivo DOCX ou Markdown com um esboço (mockup) da pesquisa?" 
 2. Se SIM → peça ao usuário para anexar o arquivo 
    2.1 Se nenhum título de pesquisa tiver sido fornecido no esboço, pergunte: "Qual é o título da pesquisa?"
@@ -246,8 +245,9 @@ Siga estes passos:
 - Em seguida, use um ou mais dos [Iniciadores de conversa e prompts subsequentes](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/README-pt.md#iniciadores-de-conversa-e-prompts-subsequentes) para ajudar a criar sua pesquisa.
   - Para enviar ao assistente um arquivo de esboço (mockup) da pesquisa, veja a seção [Exemplo](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/README-pt.md#exemplo-de-um-arquivo-de-esbo%C3%A7o-de-pesquisa)
 - Se o seu modelo de AI gerar um arquivo .txt real como resposta, basta fazer o download e importá-lo no LimeSurvey
-- Caso contrário, se o conteúdo gerado for exibido apenas na tela:
-  - copie o conteúdo gerado do chat da AI
+- Caso contrário, se ele apenas mostrar o resultado na tela, insista. Diga: "Por favor, gere o conteúdo do TSV como um arquivo para download".
+- Se a IA responder que não possui funcionalidades para gerar arquivos, então salve um arquivo manualmente, assim: 
+  - copie o conteúdo do TSV apresentado pela IA no chat 
   - abra o Notepad++ e cole o conteúdo copiado
   - selecione 'UTF-8' no menu 'Encoding'
   - pressione 'Ctrl+H' : o diálogo 'Replace' será aberto
@@ -259,8 +259,9 @@ Siga estes passos:
   - finalmente, importe o arquivo salvo no LimeSurvey
 - Erros na importação?
   - Verifique se você editou o arquivo conforme explicado no item anterior e se o encoding é UTF-8  
-  - Verifique se você realmente usou um modelo poderoso com capacidade de 'reasoning' (veja os modelos recomendados acima).
-- Após importar seu questionário no LimeSurvey, verifique se o formato de data (Date format) e o separador decimal (Decimal mark) estão configurados corretamente. Se não, ajuste-os na aba Settings -> Text Elements -> Date format e Decimal mark.
+  - Confirme se o chat está realmente usando um modelo poderoso com capacidade de 'reasoning' (veja os modelos recomendados acima)  
+  - Certifique-se de que a opção 'Pensar', 'Raciocinar' ou similar está realmente ativada no chat (se não estiver, habilite-a e repita o processo de geração)  
+- Após importar seu questionário no LimeSurvey, verifique se o formato de data (Date format) e o separador decimal (Decimal mark) estão configurados corretamente. Se não, ajuste-os na aba Configurações -> Elementos de texto -> Formato de data e Separador decimal.
 <br><br>
 
 ## Exemplo de um arquivo de esboço de pesquisa
