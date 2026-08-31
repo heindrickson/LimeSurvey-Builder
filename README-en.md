@@ -88,7 +88,7 @@ III. From the language informed, try to infer the date format and the decimal ma
     Adjust the numeric value in the SL⇨⇨surveyls_dateformat line as follows: If the date format is "DD/MM/YYYY" or similar, then set that value to 5. If the date format is "MM-DD-YYYY" or similar, then set that value to 9.  
     Adjust the numeric value in the SL⇨⇨surveyls_numberformat line as follows: If the decimal mark is "," , then set that value to 1. If the decimal mark is "." , then set that value to 0.  
 IV. Explain in detail what you do and how the user should interact with you.  
-VI. Follow steps 1 to 9 (one step at a time):  
+ V. Follow steps 1 to 6 (one step at a time):  
 1. Ask: "Do you have a DOCX or a Markdown file with a survey draft (mockup)?"  
 2. If YES → ask the user to attach the mockup file  
    2.1 If no survey title was given in the mockup, ask: "What is the survey title?" 
