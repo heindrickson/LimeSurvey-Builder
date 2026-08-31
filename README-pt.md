@@ -1,8 +1,13 @@
 # [LimeSurvey-Builder](https://github.com/heindrickson/LimeSurvey-Builder)
-Prompt que orienta um Large Language Model (LLM) a atuar como um Assistente a fim de gerar um questionário de pesquisa formatado como um arquivo TSV válido para ser importado no LimeSurvey, bem como prompts complementares para auxiliar na execução dessa tarefa.
-<br><br>
+Prompt que orienta um Large Language Model (LLM) a atuar como um Assistente a fim de gerar um questionário de pesquisa formatado como um arquivo TSV válido para ser importado no LimeSurvey, bem como prompts complementares para auxiliar na execução dessa tarefa.  
+> [!NOTE]
+> Embora esta documentação esteja em português, o Assistente **NÃO** está restrito a esse idioma, uma vez que os LLMs atuais conseguem interagir com os usuários em diversas línguas.  
+> Além disso, o conteúdo do arquivo TSV gerado também pode ser produzido em um idioma diferente do português.  
+> Em outras palavras, este Assistente **é capaz** de gerar questionários do LimeSurvey para qualquer idioma.  
+> PS - No início da conversa, o Assistente irá perguntar qual é o idioma a ser utilizado.  
+<br>
 
-# Motivação
+## Motivação
 O LimeSurvey é um software open-source muito poderoso para a realização de pesquisas online.  
 Ele permite construir, publicar e executar pesquisas, bem como coletar, analisar e exportar respostas.  
 A ferramenta suporta dezenas de tipos de perguntas e possui recursos avançados como lógica condicional (branching) e validação de perguntas. 
@@ -13,10 +18,10 @@ Portanto, é natural que procurássemos maneiras de usar a Inteligência Artific
 
 > Testes realizados mostraram que simplesmente solicitar à IA que gere uma pesquisa no formato .lss padrão do LimeSurvey costuma falhar na hora da importação.  
 > Isso provavelmente ocorre devido ao formato variar ligeiramente entre versões do LimeSurvey ou porque a documentação encontra-se espalhada ou porque o formato é complexo, já que há dezenas de campos de atributos que podem ser definidos.  
-> Portanto, foi necessário explorar outras alternativas. 🔎
-<br><br>
+> Portanto, foi necessário explorar outras alternativas. 🔎  
+<br>
 
-# Solução encontrada
+## Solução encontrada
 > 💡  
 > Descobrimos que a maneira mais eficaz e menos propensa a falhas de usar a IA para criar uma definição de pesquisa válida é instruí-la a usar o formato Tab Separated Value (TSV), que é suportado pelo LimeSurvey, **e usar apenas** um subconjunto dos campos de atributos (considerados 'essenciais') ! 
 
@@ -27,7 +32,7 @@ Porém, um efeito colateral pode ocorrer ao utilizarmos o formato TSV em serviç
 Veja na seção [Como usar](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/README-pt.md#como-usar) explicações sobre como substituir os caracteres '⇨' recebidos no texto do TSV gerado pela IA (somente necessário se a IA utilizada não possuir a funcionalidade de geração de arquivo para download ou não estiver com essa função habilitada). 
 <br><br>
 
-# Por que não um Assistente/Agent pronto para uso?
+## Por que não um Assistente/Agent pronto para uso?
 A maneira ideal de usar este prompt SERIA através de um assistente como um "GPT" (OpenAI), um "Gem" (Google) ou um "Agent" (Microsoft Copilot).  
 No entanto, nenhum desses provedores oferece atualmente planos de assinatura acessíveis (low-cost) que permitam a usuários 'comuns' publicarem  e usarem tais soluções.  
 Além disso, verificamos que todos os provedores desse tipo de solução limitam o prompt de instruções a 8 mil caracteres, tamanho que fica um pouco abaixo do necessário para as orientações detalhadas que enviamos à IA no prompt principal.   
@@ -35,7 +40,7 @@ Além disso, verificamos que todos os provedores desse tipo de solução limitam
 Por esses motivos, decidimos publicar os prompts e instruções de uso neste repositório, de modo que qualquer pessoa com uma assinatura básica de serviço de chat com LLM possa copiá-los e usá-los diretamente na interface do chat.
 <br><br>
 
-# O prompt principal
+## O prompt principal
 Copie o texto abaixo e cole na interface de chat da sua AI.
 
 ```
@@ -95,26 +100,27 @@ IV. Explique detalhadamente o que você faz e como o usuário deve interagir com
    2.1 Se nenhum título de pesquisa tiver sido fornecido no esboço, pergunte: "Qual é o título da pesquisa?"
    2.2 Ajuste a linha SL⇨⇨surveyls_title com o título informado 
    2.3 Pergunte: "O texto de cada pergunta deve ser exibido em negrito? (usaremos <b>)"
-   2.4 Analise a estrutura (grupos, tipos, subquestões, branching, validações, etc.) sem perguntar mais nada → monte o TSV completo → pule para o passo 4. 
+   2.4 Analise a estrutura (grupos, tipos de questões, subquestões, branching, validações, texto de help, etc.) sem perguntar mais nada → monte o TSV completo → pule para o passo 4. 
 3. Se NÃO houver arquivo de esboço → modo interativo:
    3.1 Pergunte: "Qual é o título da pesquisa?" e ajuste a linha SL⇨⇨surveyls_title
    3.2 Pergunte: "O texto de cada pergunta deve ser exibido em negrito? (usaremos <b>)"
    3.3 Pergunte: "Qual é o nome do primeiro grupo de perguntas?" e prepare a linha G correspondente. 
    3.4 Solicite a 1ª questão: tipo, texto, opções (se o usuário colar um rascunho da pergunta, aceite-o e analise-o).
-   3.5 Infira o identificador type/escale do LimeSurvey para essa questão 
+   3.5 Infira o identificador de type/escale apropriado para a questão → preencha o campo 
    3.6 Se negrito foi solicitado → use <b>texto</b> só no campo text de Q
    3.7 Código: GmmQnn (ex: G01Q03) – mm e nn sempre iniciam em 01
-   3.8 SQxx e Axx reiniciam por questão
-   3.9 Pergunte relevance (branching) → preencha o campo
-   3.10 Pergunte validação → preencha em_validation_q e em_validation_q_tip (sem {})
-   3.11 Pergunte: "Próxima questão neste grupo, novo grupo ou terminar?"
+   3.8 SQxx e Axx reiniciam por questão 
+   3.9 Pergunte se há texto de ajuda (help) → preencha o campo 
+   3.10 Pergunte relevance (branching) → preencha o campo
+   3.11 Pergunte validação → preencha em_validation_q e em_validation_q_tip (sem {})
+   3.12 Pergunte: "Próxima questão neste grupo, novo grupo ou terminar?"
    Repita até "terminar".
 4. Sempre adicione o grupo de finalização:
 G⇨99⇨G99⇨1⇨Finalização⇨⇨pt-BR⇨⇨⇨⇨⇨⇨⇨⇨
 Q⇨X⇨G99Q99⇨1⇨Você chegou ao final da pesquisa.<big>É necessário clicar em "Enviar" para salvar suas respostas.</big> Ou clique em "Anterior" para revisar (depois volte e clique "Enviar", senão as respostas NÃO serão salvas).⇨⇨pt-BR⇨N⇨N⇨⇨⇨⇨⇨⇨
 
 5. Após ter produzido o conteúdo completo do TSV:  
-    - informe "O conteúdo TSV está pronto" e pergunte: "Você quer que eu verifique se o TSV está bem formado, de acordo com estas instruções?"  
+    - informe "O conteúdo TSV está pronto" e pergunte: "Você quer que eu verifique se o TSV está bem formado, de acordo com as diretrizes?"  
     - se SIM → verifique o conteúdo do TSV em relação a estas diretrizes e faça ajustes, se necessário.  
 6. Em seguida: 
    - se você possui funcionalidades de gerar arquivos para download → mantenha os separadores como '\t', salve o texto gerado em arquivo .txt (UTF-8) e disponibilize link de download
@@ -211,26 +217,28 @@ Q⇨|⇨G04Q02⇨1⇨Se desejar, envie uma foto ou arquivo relacionado a um expe
 - Mesma relevance no grupo → aplique no G
 - Validação → em_validation_q (sem {})
 - No TSV, o '\t' é separador → NUNCA use '\t' nos textos dos campos 
-- Com esboço DOCX/HTML: infira ao máximo; evite perguntar
+- Com esboço DOCX/Markdown: infira ao máximo; evite perguntar
 - Sempre finalize o TSV com G99
 - Se o usuário pedir um exemplo de esboço (mockup) de pesquisa, informe o link: https://github.com/heindrickson/LimeSurvey-Builder/blob/main/Esboço_de_pesquisa_Exemplo.docx
 
 ```
 <br>
 
-# Iniciadores de conversa e prompts subsequentes
-Após copiar o prompt principal e colar no chat da sua AI, aguarde a mensagem de introdução do assistente. 
-Em seguida, use um ou mais dos seguintes prompts para ajudar a criar sua pesquisa.
+## Prompts complementares (opcionais) 
+Após copiar o prompt principal e colar no chat do seu serviço de AI, aguarde a mensagem inicial do Assistente que explica o que ele faz e como o usuário deve interagir com ele.  
+Em seguida, o Assistente fará perguntas introdutórias para iniciar a construção de um novo questionário.
 
-1. Olá, explique-me em detalhes o que você faz e como devemos interagir.
-2. Mostre-me um exemplo de um esboço (mockup) de pesquisa no formato DOCX, para que eu possa criar outro baseado nele, adaptado para a minha própria pesquisa.
-3. Olá, ajude-me a criar uma nova pesquisa no LimeSurvey. Vou lhe enviar um documento que contém um esboço (mockup) do questionário da pesquisa. Ele simula a estrutura de grupos e perguntas, e também possui instruções sobre apresentação condicional (branching) e validações. Infira tudo a partir do arquivo, só me pergunte algo se não conseguir descobrir.
-4. Olá, explique-me em detalhes como posso ajustar e salvar o conteúdo TSV quando você apenas exibe o resultado na tela (sem um link de download). Descreva como fazer isso via Notepad++ e no VS Code.
+Caso queira tirar outras dúvidas antes de prosseguir, você pode fazer perguntas adicionais, como as abaixo:  
+- Mostre-me um exemplo de um esboço (mockup) de pesquisa no formato DOCX, para que eu possa criar outro baseado nele, adaptado para a minha própria pesquisa.  
+- Olá, explique-me em detalhes como posso ajustar e salvar o conteúdo TSV quando você apenas exibe o resultado na tela (sem um link de download). Descreva como fazer isso via Notepad++ e no VS Code.
+- 
+Depois, quando estiver pronto para começar de fato, fale algo assim:  
+- Olá, ajude-me a criar uma nova pesquisa no LimeSurvey. Vou lhe enviar um documento que contém um esboço (mockup) do questionário da pesquisa. Ele simula a estrutura de grupos e perguntas, e também possui instruções sobre apresentação condicional (branching) e validações. Infira tudo a partir do arquivo, só me pergunte algo se não conseguir descobrir.
 <br><br>
 
-# Como usar 
+## Como usar 
 Requisito: assinatura de um provedor de AI que ofereça chat com modelos de 'reasoning'. Além disso, o modelo deve ter acesso à Web habilitado.  
-Em agosto de 2026, alguns modelos recomendados são: ChatGpt 5.6 Terra, Claude Sonnet 5, Gemini 3.1 Pro, Kimi K3, DeepSeek V4 Pro, Qwen3.8-27B, GLM 5.3-Flash, Minimax M3.  
+Em agosto de 2026, alguns modelos recomendados são: ChatGpt 5.6 Luna (com 'Pensar' habilitado), Claude Sonnet 5 (com 'Thinking' habilitado), Gemini 3.1 Pro, Kimi K3 (com  'Reasoning effort'), DeepSeek V4 Pro (com 'Thinking' habilitado), Qwen3.8-27B (com 'Thinking' habilitado), GLM 5.3-Flash, Minimax M3 (com 'Thinking' habilitado).  
 
 Siga estes passos:  
 - Copie o texto do "Main prompt" acima e cole na interface de chat da sua AI
@@ -255,8 +263,8 @@ Siga estes passos:
 - Após importar seu questionário no LimeSurvey, verifique se o formato de data (Date format) e o separador decimal (Decimal mark) estão configurados corretamente. Se não, ajuste-os na aba Settings -> Text Elements -> Date format e Decimal mark.
 <br><br>
 
-# Exemplo de um arquivo de esboço de pesquisa
-Embora o assistente possa construir perguntas individuais de forma interativa, o método recomendado é enviar um esboço (DOCX ou HTML) da pesquisa completa, para que o LLM possa "ver o panorama geral" (see the big picture). 
+## Exemplo de um arquivo de esboço de pesquisa
+Embora o assistente possa construir perguntas individuais de forma interativa, o método recomendado é enviar um esboço (DOCX ou Markdown) da pesquisa completa, para que o LLM possa "ver o panorama geral" (see the big picture). 
 
 Um arquivo de esboço (mockup) é praticamente obrigatório ao definir perguntas condicionais ('branching'), pois torna mais fácil para o LLM visualizar o cenário completo (ele será capaz de 'ver' a pergunta contendo a condição e as perguntas referenciadas ao mesmo tempo). Note que, para poder definir condições de 'branching', o esboço precisará ter as perguntas numeradas, a fim de referenciar cada pergunta pelo seu próprio número.  
 PS - o esquema de numeração usado no esboço será substituído automaticamente pelo LLM usando um padrão GmmQnn (Gmm = número do grupo; Qnn = número da pergunta dentro do grupo).
@@ -265,7 +273,7 @@ Você pode baixar o arquivo DOCX abaixo e usá-lo como um template para construi
 [Exemplo de Esboço de Pesquisa](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/Esboço_de_pesquisa_Exemplo.docx) 
 <br><br>
 
-# Limitações
+## Limitações
 Ao exportar uma pesquisa do LimeSurvey no formato TSV, pode-se ver inúmeros campos que poderiam em tese serem preenchidos.  
 Esses campos podem ser de uso geral ou específicos para certos tipos de perguntas.  
 No entanto, nosso assistente é explicitamente instruído a usar **apenas** um conjunto específico de campos (os mais comuns, talvez 90% dos casos de uso).  
