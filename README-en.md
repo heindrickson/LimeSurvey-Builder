@@ -30,7 +30,7 @@ However, a side effect can occur when using the TSV format with chat-based AI se
 > ✔️
 > For this reason, we are using a simple trick: during chat communication with the AI, every '\t' character is sent as a '⇨' character, and the AI ​​is instructed to also replace any '\t' character with '⇨' when displaying the generated TSV content in the chat. 
 
-See the [How to use](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/README-en.md#how-to-use) section for explanations on how to replace the '⇨' characters found in the AI-generated TSV text (this is only necessary if the AI ​​being used lacks a file download generation feature or if that function is not enabled).
+See the [How to use](README-en.md#how-to-use) section for explanations on how to replace the '⇨' characters found in the AI-generated TSV text (this is only necessary if the AI ​​being used lacks a file download generation feature or if that function is not enabled).
 <br><br>
 
 ## Why not a ready-to-use Assistant/Agent?
@@ -241,11 +241,13 @@ As of August 2026, some recommended models are: ChatGpt 5.6 Luna (with 'Think' e
 
 Follow these steps:  
 - Copy the text of the "Main prompt" above and paste it into your AI's chat interface
-- Wait for the assistant's introduction message
-- Then, use one or more of the [Conversation starters and subsequent prompts](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/README-en.md#conversation-starters-and-subsequent-prompts) to help create your survey.
-  - To send the Assistant a survey mockup file, see the [Example](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/README-en.md#example-of-a-survey-mockup-file) section
+- Wait for the Assistant's introductory message and usage instructions
+- The Assistant will then ask questions to begin generating a new survey questionnaire
+  - Answer the questions (or, optionally, use a [supplementary prompt](README-en.md#supplementary-prompts-optional))
+  - To send the Assistant a survey mockup file, see the [Example](README-en.md#example-of-a-survey-mockup-file) section
+  - Once the Assistant has all the necessary information, it will generate the survey questionnaire in TSV format
 - If your AI model generates an actual .txt file as a response, just download it and import it into LimeSurvey
-- Otherwise, if the AI simply displays the result on the screen, insist by asking: "Please generate the TSV content as a downloadable file."
+- Otherwise, if the AI simply displays the result on the screen, insist by asking: "Please generate the TSV content as a downloadable file"
 - If the AI ​​replies that it lacks the functionality to generate files, you will need to save the file manually, as follows:
   - copy the TSV content provided by the AI ​​in the chat
   - open Notepad++ and paste the content copied
