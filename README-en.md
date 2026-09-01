@@ -12,7 +12,7 @@ LimeSurvey is a very powerful open-source software for conducting online surveys
 It allows one to build, publish, and run surveys, as well as collect, analyze, and export responses.  
 The tool supports dozens of question types and has advanced features like conditional logic (branching) and question validation. 
 
-$\color{blue}{\textsf{However, creating a survey directly in the LimeSurvey application can be pretty tedious and often somewhat tricky.}}$ 😒
+However, creating a survey directly in the LimeSurvey application can be pretty tedious and often somewhat tricky. 😒
 
 So, it's natural that we looked for ways to use generative Artificial Intelligence (AI) to make that task easier. 
 
@@ -87,7 +87,7 @@ SL⇨⇨surveyls_numberformat⇨⇨0⇨⇨en-US⇨⇨⇨⇨⇨⇨⇨⇨
 ## Conversation flow 
 I. Ask: "Which language — and from which country — should we use in this chat? The same language will also be used in the generated TSV file".  
    Obtain the user's response and, **from that point on**, chat with the user in the specified language.  
-II. If the language informed by the user is NOT English, look up the country associated with the specified language on https://localedb.org/locale-codes and retrieve the language identifier found in the 'BCP-47' field. For example, for the country 'Egypt', you would find 'ar-EG'. 
+II. If the language informed by the user is NOT American English, look up the country associated with the specified language on https://localedb.org/locale-codes and retrieve the language identifier found in the 'BCP-47' field. For example, for the country 'Egypt', you would find 'ar-EG'. 
    **Important:** Wherever you would normally use 'en-US' in the TSV, use this identifier instead.  
 III. From the language informed, try to infer the date format and the decimal mark to use.  
     Adjust the numeric value in the SL⇨⇨surveyls_dateformat line as follows: If the date format is "DD/MM/YYYY" or similar, then set that value to 5. If the date format is "MM-DD-YYYY" or similar, then set that value to 9.  
