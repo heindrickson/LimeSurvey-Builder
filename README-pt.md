@@ -12,7 +12,7 @@ O LimeSurvey é um software open-source muito poderoso para a realização de pe
 Ele permite construir, publicar e executar pesquisas, bem como coletar, analisar e exportar respostas.  
 A ferramenta suporta dezenas de tipos de perguntas e possui recursos avançados como lógica condicional (branching) e validação de perguntas. 
 
-$\color{blue}{\textsf{No entanto, criar uma pesquisa diretamente na aplicação LimeSurvey pode ser bastante tedioso e frequentemente um tanto complicado.}}$ 😒
+No entanto, criar uma pesquisa diretamente na aplicação LimeSurvey pode ser bastante tedioso e frequentemente um tanto complicado. 😒
 
 Portanto, é natural que procurássemos maneiras de usar a Inteligência Artificial (IA) generativa para facilitar essa tarefa.  
 
@@ -32,7 +32,7 @@ Porém, um efeito colateral pode ocorrer ao utilizarmos o formato TSV em serviç
 Veja na seção [Como usar](README-pt.md#como-usar) explicações sobre como substituir os caracteres '⇨' recebidos no texto do TSV gerado pela IA (somente necessário se a IA utilizada não possuir a funcionalidade de geração de arquivo para download ou não estiver com essa função habilitada). 
 <br><br>
 
-## Por que não um Assistente/Agent pronto para uso?
+## Por que não um Assistente/Agente pronto para uso?
 A maneira ideal de usar este prompt SERIA através de um assistente como um "GPT" (OpenAI), um "Gem" (Google) ou um "Agent" (Microsoft Copilot).  
 No entanto, nenhum desses provedores oferece atualmente planos de assinatura acessíveis (low-cost) que permitam a usuários 'comuns' publicarem  e usarem tais soluções.  
 Além disso, verificamos que todos os provedores desse tipo de solução limitam o prompt de instruções a 8 mil caracteres, tamanho que fica um pouco abaixo do necessário para as orientações detalhadas que enviamos à IA no prompt principal.   
