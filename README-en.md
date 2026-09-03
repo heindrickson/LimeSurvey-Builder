@@ -1,9 +1,9 @@
 # [LimeSurvey-Builder](https://github.com/heindrickson/LimeSurvey-Builder)
-A prompt that guides a Large Language Model (LLM) to act as an Assistant to generate a survey questionnaire formatted as a valid TSV file for import into LimeSurvey, along with supplementary prompts to assist in executing this task.  
+A prompt that guides a Large Language Model (LLM) to act as an Assistant to generate a survey questionnaire formatted as a valid TSV file for import into [LimeSurvey](https://github.com/LimeSurvey/LimeSurvey), along with supplementary prompts to assist in executing this task.  
 > [!NOTE]  
 > Although this documentation is in English, the Assistant is **NOT** restricted to this language, as current LLMs can chat with the users in many languages.  
 > Furthermore, the content of the generated TSV file can also be produced in a language other than English.  
-> In other words, this Assistant **is capable** of generating LimeSurvey questionnaires for any language.  
+> In other words, this Assistant **is capable** of generating LimeSurvey questionnaires for virtually any language.  
 > PS – At the start of the conversation, the Assistant will ask which language to use.  
 <br>
 
@@ -33,8 +33,26 @@ However, a side effect can occur when using the TSV format with chat-based AI se
 See the [How to use](README-en.md#how-to-use) section for explanations on how to replace the '⇨' characters found in the AI-generated TSV text (this is only necessary if the AI ​​being used lacks a file download generation feature or if that function is not enabled).
 <br><br>
 
+## Screenshots
+
+### Assistant running on ChatGpt-5.6-Luna ('Think' enabled)
+
+|                |                 |                 |                 |
+|:--------------:|:---------------:|:---------------:|:---------------:|
+| [![ChatGpt screenshot 1](images/Screenshot_2-9-2026_193929_chatgpt.com.jpeg)](images/Screenshot_2-9-2026_193929_chatgpt.com.jpeg) | [![ChatGpt screenshot 2](images/Screenshot_2-9-2026_194142_chatgpt.com.jpeg)](images/Screenshot_2-9-2026_194142_chatgpt.com.jpeg) | [![ChatGpt screenshot 3](images/Screenshot_2-9-2026_194941_chatgpt.com.jpeg)](images/Screenshot_2-9-2026_194941_chatgpt.com.jpeg) | [![ChatGpt screenshot 4](images/Screenshot_2-9-2026_195051_chatgpt.com.jpeg)](images/Screenshot_2-9-2026_195051_chatgpt.com.jpeg) |
+
+*Note: The ChatGPT interface can usually generate the TSV file for download, as shown in the last image above.*
+
+### Assistant running on Goog-Gemini-3.1 ('Thinking' by default)
+|                |                 |                 |                 |
+|:--------------:|:---------------:|:---------------:|:---------------:|
+| [![Gemini screenshot 1](images/Screenshot_2-9-2026_214563_gemini.google.com.jpeg)](images/Screenshot_2-9-2026_214563_gemini.google.com.jpeg) | [![Gemini screenshot 2](images/Screenshot_2-9-2026_214716_gemini.google.com.jpeg)](images/Screenshot_2-9-2026_214716_gemini.google.com.jpeg) | [![Gemini screenshot 3](images/Screenshot_2-9-2026_214958_gemini.google.com.jpeg)](images/Screenshot_2-9-2026_214958_gemini.google.com.jpeg) | [![Gemini screenshot 4](images/Screenthos_2-9-2026_215014_gemini.google.com.jpeg)](images/Screenthos_2-9-2026_215014_gemini.google.com.jpeg) |
+
+*Note: The Gemini 3.1 interface often refuses to generate the TSV file for download, even after an explicit request. In such cases, the solution is to edit and save the file manually, as explained in section [How to use](README-en.md/#how-to-use).*
+<br><br>
+
 ## Why not a ready-to-use Assistant/Agent?
-The ideal way to use this prompt **would** be via an assistant such as a "GPT" (OpenAI), a "Gem" (Google), or an "Agent" (Microsoft Copilot).  
+The ideal way to use this prompt would be through an assistant developed with specialized solutions for this purpose, such as a "GPT" (OpenAI), a "Gem" (Google), or an "agent" (Microsoft Copilot).  
 However, none of these providers currently offer affordable (low-cost) subscription plans that allow "average" individual users to publish and use such solutions.  
 Furthermore, we found that all providers of this type of solution limit the instruction prompt to 8,000 characters, a length that falls slightly short of what is needed for the detailed guidelines we send to the AI ​​in the main prompt.  
 For these reasons, we decided to publish the prompts and usage instructions in this repository, so that anyone with a basic LLM chat service subscription can copy and use them directly within the chat interface.
@@ -85,6 +103,7 @@ SL⇨⇨surveyls_dateformat⇨⇨9⇨⇨en-US⇨⇨⇨⇨⇨⇨⇨⇨
 SL⇨⇨surveyls_numberformat⇨⇨0⇨⇨en-US⇨⇨⇨⇨⇨⇨⇨⇨
 
 ## Conversation flow 
+Note: - Do NOT display the numbering of the stages and steps of this conversation flow in the chat, nor quote them verbatim; assume that the user is NOT their author.  
 I. Ask: "Which language — and from which country — should we use in this chat? The same language will also be used in the generated TSV file".  
    Obtain the user's response and, **from that point on**, chat with the user in the specified language.  
 II. If the language informed by the user is NOT American English, look up the country associated with the specified language on https://localedb.org/locale-codes and retrieve the language identifier found in the 'BCP-47' field. For example, for the country 'Egypt', you would find 'ar-EG'. 
@@ -203,11 +222,13 @@ Q⇨T⇨G04Q01⇨G02Q01 != "A04"⇨Describe a learning experience⇨⇨en-US⇨N
 Send a photo or file related to an experiment
 Q⇨|⇨G04Q02⇨1⇨If desired, send a photo or file related to an experiment⇨Accepts image, PDF, or Zip⇨en-US⇨N⇨N⇨⇨0⇨png, gif, doc, odt, jpg, jpeg, pdf, png, zip⇨⇨⇨
 
-## Mandatory rules
-- Mandatory questions (Y) by default
-- M → uses SQ
-- L, !, R → use A
-- F → uses SQ → A
+## Reiteration of some guidelines
+- Questions are mandatory by default
+- type/scale M → use SQ
+- type/scale L, !, R → use A
+- type/scale Y → do NOT use A
+- type/scale F → use SQ → A
+- type/scale | → requires allowed_filetypes field
 - Never number in the text field of Q/SQ/A
 - qcode: GmmQnn (mm = 2-digit group; nn restarts per group)
 - Remove numbering from questions submitted by the user
@@ -215,6 +236,8 @@ Q⇨|⇨G04Q02⇨1⇨If desired, send a photo or file related to an experiment�
 - Relevance → relevance field (without {})
 - Same relevance in the group → apply it to G
 - Validation → em_validation_q (without {})
+- Dropdown list → use_dropdown=1
+- regex → place a '/' at the beginning and the end
 - In the TSV, '\t' is the separator → NEVER use '\t' in field texts
 - With a DOCX/Markdown mockup: infer as much as possible; avoid asking
 - Always end the TSV with G99
@@ -240,7 +263,9 @@ Requirement: subscription to an AI provider that offers chat with 'reasoning' mo
 As of August 2026, some recommended models are: ChatGpt 5.6 Luna (with 'Think' enabled), Claude Sonnet 5 (with 'Thinking' enabled), Gemini 3.1 Pro, Kimi K3 (with 'Reasoning effort'), DeepSeek V4 Pro (with 'Thinking' enabled), Qwen3.8-27B (with 'Thinking' enabled), GLM 5.3-Flash, Minimax M3 (with 'Thinking' enabled).  
 
 Follow these steps:  
-- Copy the text of the "Main prompt" above and paste it into your AI's chat interface
+- Open your Browser and launch the chat window for your AI service.
+- Select an LLM model and enable Web access and reasoning capabilities ('Thinking', 'Reasoning', or similar).
+- Copy the text of the [main prompt](README-en.md#the-main-prompt) above and paste it into your AI's chat interface
 - Wait for the Assistant's introductory message and usage instructions
 - The Assistant will then ask questions to begin generating a new survey questionnaire
   - Answer the questions (or, optionally, use a [supplementary prompt](README-en.md#supplementary-prompts-optional))
@@ -260,30 +285,31 @@ Follow these steps:
   - then save the edited content as a text file (.txt)
   - finally, import the saved file into LimeSurvey
 - Errors on importing?
-  - Check if you edited the file as explained in the previous item and if the encoding is UTF-8  
-  - Verify if the chat is really using a powerful model with 'reasoning' capability (see recommended models above)
-  - Ensure that the 'Think', 'Reason', or similar option is actually enabled in the chat (if not, enable it and repeat the generation process).
-- After importing your questionnaire into LimeSurvey, check if the date format and the decimal mark are correctly set. If not, adjust them in the Settings tab -> Text Elements -> Date format and Decimal mark.
+  - If you saved the TSV file manually, verify that all instructions from the previous item were followed and that the encoding is UTF-8.
+  - Check if the chat is really using a powerful LLM with 'reasoning' capability (see recommended models above)
+  - Ensure that the 'Thinking', 'Reasoning', or similar option is actually activated in the chat and that Web access is enabled (if not, enable these options and repeat the generation process).  
+
+After importing your questionnaire into LimeSurvey, check if the date format and the decimal mark are correctly set. If not, adjust them in the Settings tab -> Text Elements -> Date format and Decimal mark.
 <br><br>
 
 ## Example of a survey mockup file
-Although the assistant can build individual questions interactively, the recommended method is to send a mockup (DOCX or Markdown) of the complete survey, so the LLM can "see the big picture". 
+Although the Assistant can build individual questions interactively, the recommended method is to send a mockup (DOCX or Markdown) of the complete survey, so the LLM can grasp "the big picture".  
+A similar document may already exist, as teams often create one while discussing the questionnaire's structure and content.
 
-A mockup file is practically mandatory when defining conditional questions ('branching'), as it makes it easier for the LLM to visualize the full scenario (it will be able to 'see' the question containing the condition and the referenced question(s) at the same time). Note that, to be able to define branching conditions, the mockup will need to have the questions numbered, in order to reference each question by its own number.  
+Furthermore, a mockup file is virtually essential when defining conditional questions ('branching'), as it allows the LLM to visualize the entire questionnaire 'at once' (enabling it to see both the question containing the condition and the referenced questions simultaneously). Note that, to define branching conditions, the mockup must contain numbered questions (so that each question can be referenced by a specific number).  
 PS - the numbering scheme used in the mockup will be automatically replaced by the LLM using a GmmQnn pattern (Gmm = Group number; Qnn = Question number within the group).
 
-Your can download the DOCX file below and use it as a template to build your own survey mockup. When ready, send your DOCX to the LimeSurvey-Builder assistant: 
+Your can download the DOCX file below and use it as a template to build your own survey mockup. When ready, send your DOCX to the LimeSurvey-Builder Assistant: 
 [Survey Mockup Example](https://github.com/heindrickson/LimeSurvey-Builder/blob/main/Survey_Mockup_Example.docx) 
 <br><br>
 
 ## Limitations
-When exporting a survey from LimeSurvey in TSV format, one can see numerous fields that could theoretically be populated.  
-These fields may be for general use or specific to certain question types.  
-However, our assistant is explicitly instructed to use **only** a specific set of fields (the most common ones, maybe 90% of use cases).  
+When exporting a survey from LimeSurvey in TSV format, one can see numerous fields that could theoretically be populated. Those fields are for general use or apply only to  certain question types.  
+However, our Assistant is explicitly instructed to use **only** a specific subset of those fields, the most common ones, which likely cover about 90% of use cases. 
 
-Therefore, if the user requests some functionality requiring a field not covered by these instructions, the assistant will likely be unable to implement it.
-So, the recommendation is: do **not** ask the Assistant to generate a survey with advanced features (e.g., statistics generation, quotas, fields size, multilingual surveys etc.) or GUI attributes. 
-Use the Assistant to create the basic survey features, and — after importing it into LimeSurvey — add or modify attributes such as those mentioned. 
+Therefore, if the user requests some functionality requiring a field not covered by these instructions, the Assistant will likely be unable to implement it.  
+So, the recommendation is: do **not** ask the Assistant to generate a survey with advanced features like: statistics generation, quotas, fields size, multilingual surveys etc.) or GUI attributes.  
+Use the Assistant to create the **essential** survey features and, after importing it into LimeSurvey, add or modify attributes such as those mentioned.
 
 PS - There is a workaround to create a multilingual survey with LimeSurvey-Builder: create the TSV content for each language using the Assistant, then concatenate all of them together. **But** it will be necessary to edit the final TSV to make these adjustments: a) keep only ONE set of type 'S' records, at the beginning; b) adjust the 'additional_languages' record to add the other language identifiers. 
 <br><br>
