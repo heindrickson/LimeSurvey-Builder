@@ -1,0 +1,4 @@
+https://www.limesurvey.org/manual/Tab_Separated_Value_survey_structure
+https://www.limesurvey.org/manual/Question_types
+https://www.limesurvey.org/manual/ExpressionScript_-_Presentation
+https://localedb.org/locale-codes
